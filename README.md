@@ -1,2 +1,2 @@
 # Cloudbag
-A student friendly web-app for study documentation  and focused learning.
+A student friendly cloud storage web-app for study documentation  and focused learning.
