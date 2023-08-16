@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File List</title>
+</head>
+<body onload="getFiles(sessionStorage.getItem('userid'))">
+  <h1 id="username"></h1>
+  
+  
+  <ul id="filesList"></ul>
+  <p id="result"></p>
+  <div id="fileContent" class='child'></div>
+  <script>
+    function getFiles(folderName) {
+     // sessionStorage.setItem('userid',document.getElementById("foldername").value);
+      document.getElementById("username").innerHTML = sessionStorage.getItem('userid');
+      fetch(`/list-files/${folderName}`)
+        .then(response => response.json())
+        .then(data => {
+          const filesList = document.getElementById('filesList');
+          filesList.innerHTML = ''; // Clear previous list
+          data.files.forEach(file => {
+            const listItem = document.createElement('li'); 
+
+            const deleteitem = document.createElement('button');
+            deleteitem.textContent = 'delete';
+
+            const shareitem = document.createElement('button');
+            shareitem.textContent = 'share';
+            
+            listItem.addEventListener('click', function() {
+            document.getElementById('result').innerHTML = file;
+            viewFile(file);
+            });
+
+            deleteitem.addEventListener('click',()=>{
+              deletefile(file);
+            });
+
+            shareitem.addEventListener('click',()=>{
+              sharefile(file);
+            });
+
+
+
+            listItem.textContent = file;
+            filesList.appendChild(listItem);
+            filesList.appendChild(deleteitem);
+            filesList.appendChild(shareitem);
+            
+          });
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+  </script>
+  <script>
+    function viewFile(fileName) {
+      
+      // var filetoview = sessionStorage.getItem('userid')+'/'+fileName;
+      var filetoview = sessionStorage.getItem('userid')+'/'+fileName;
+      console.log(filetoview)
+      const data = new URLSearchParams();
+      data.append('filename',fileName);
+      data.append('filetoview',filetoview);
+      fetch('/toview', {
+    method: 'POST',
+    body: data
+  })
+  .then(response => response.text())
+  .then(data => {
+    
+          const fileContentDiv = document.getElementById('fileContent');
+          if (fileName.toLowerCase().endsWith('.png') || fileName.toLowerCase().endsWith('.jpg') || fileName.toLowerCase().endsWith('.jpeg')) {
+            // For image files, display the Base64 encoded data as an image
+            fileContentDiv.innerHTML = `<img src="data:image/png;base64,${data}" alt="${fileName}" width="100%" height="600px"/>`;
+            console.log(fileName);
+          }
+          else if(fileName.toLowerCase().endsWith('.pdf')){
+            fileContentDiv.innerHTML = `<object data="data:application/pdf;base64,${data}" type="application/pdf" width="100%" height="600px">`;
+          }
+          else if(fileName.toLowerCase().endsWith('.txt')){
+            fileContentDiv.innerHTML = `<object data="data:text/plain;base64,${data}" type="application/pdf" width="100%" height="600px">`;
+          }
+           else {
+            // For other file types, display the raw data
+            fileContentDiv.textContent = data;
+          }
+  })
+  .catch(err => console.error('Sharing error', err),
+  document.getElementById('fileContent').innerHTML = 'NO DATA');
+
+
+     }
+  </script>
+  <script>
+function deletefile(filetodelete){
+          if(confirm("DO YOU WANT TO DELETE "+ filetodelete)){
+            var myid = sessionStorage.getItem('userid');            
+            const data = new URLSearchParams();
+            data.append('filetodelete',myid+'/'+filetodelete);
+            fetch('/deletefile',{
+              method: 'POST',
+              body: data
+            })
+            .then(response => response.json())
+  .then(data => {
+    console.log(data.message); // Assuming your server sends back a response
+  })
+  .catch(err => console.error('Sharing error', err));
+
+          }
+        }
+       
+  </script>
+  <script>
+    function sharefile(filetoshare){
+          let person = prompt("Whom to share");
+          let dest = person+"/"+filetoshare;
+          const data = new URLSearchParams();
+          var myid = document.getElementById("username").innerHTML;
+          localStorage.setItem('userid',myid);
+  data.append('filetoshare',localStorage.getItem('userid')+'/'+filetoshare);
+  data.append('dest', dest);
+
+  fetch('/sharefile', {
+    method: 'POST',
+    body: data
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data.message); // Assuming your server sends back a response
+  })
+  .catch(err => console.error('Sharing error', err));
+
+        }
+  </script>
+</body>
+</html>
