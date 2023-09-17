@@ -1,36 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cloud Essay</title>
 
-    <style>
-        #results,#accur-div{
-            display: flexbox;
-            flex-direction: row;
-            position: relative;
-            top: 0;
-        }
-        /* #accur-div{
-            align-items: stretch;
-        } */
-
-
-    </style>
 </head>
 <body>
     <h1>Write Essay</h1><br>
-    
     <textarea id="paragraph" name="para" placeholder="Try it" rows="10" cols="50" spellcheck="true"></textarea>
+    
     <div id="accur-div">
         <div id = "accuracy"></div>
     </div>  
+    <button id="verify" onclick="validate()">Verify</button>
     <div id="results"></div>
 
 
-    <br>
-    <button id="verify" onclick="validate()">Verify</button>
     <script>
         function validate() {
             var paradata = document.getElementById('paragraph').value;
@@ -57,24 +44,40 @@
                     Accuracy.max = numWord; 
                     document.getElementById("accuracy").innerHTML = percentageoferr.toFixed(1)+"% accuracy";
                     accuracy.appendChild(Accuracy);
-
+                    const createCounter = () => {
+                        let count = 0;
+                        return () => {
+                            return ++count;
+                        };
+                    };
+                    const counter = createCounter();
+  
                     if (data.Result.length > 0) {
                         data.Result.forEach(each => {
-                            const ol = document.createElement('ol');
+                            let no = counter();
+                            console.log(no)
+
                             const ul = document.createElement('ul');
-
-                            const messageLi = document.createElement('li');
-                            messageLi.textContent = `Message: ${each.message}`;
-                            const sentenceLi = document.createElement('li');
-                            sentenceLi.textContent = `Sentence: ${each.sentence}`;
+                            let li = document.createElement('li');
+                            const p = document.createElement('p');
+                            const constainer = document.createElement('div');
                             const wordLi = document.createElement('li');
+                            const messageLi = document.createElement('li');
+                            const sentenceLi = document.createElement('li');
+                            
+                            p.textContent = 'error : ' + no;
+                            console.log(p);
+                            messageLi.textContent = `Message: ${each.message}`;
+                            sentenceLi.textContent = `Sentence: ${each.sentence}`;
                             wordLi.textContent = `Word: ${each.word}`;
-
-                            ul.appendChild(messageLi);
-                            ul.appendChild(sentenceLi);
-                            ul.appendChild(wordLi);
-                            ol.appendChild(ul);
-                            resultDiv.appendChild(ol);
+                            
+                            ul.append(messageLi);
+                            ul.append(sentenceLi);
+                            ul.append(wordLi);
+                            constainer.append(p);
+                            constainer.append(ul);
+                            p.style.marginBottom = '0px';
+                            resultDiv.appendChild(constainer);
                         });
                     } else {
                         resultDiv.innerHTML = '<h5>No grammar errors found.</h5>';
