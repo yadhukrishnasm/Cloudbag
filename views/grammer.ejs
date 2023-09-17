@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Essay</title>
+
+    <style>
+        #results,#accur-div{
+            display: flexbox;
+            flex-direction: row;
+            position: relative;
+            top: 0;
+        }
+        /* #accur-div{
+            align-items: stretch;
+        } */
+
+
+    </style>
+</head>
+<body>
+    <h1>Write Essay</h1><br>
+    
+    <textarea id="paragraph" name="para" placeholder="Try it" rows="10" cols="50" spellcheck="true"></textarea>
+    <div id="accur-div">
+        <div id = "accuracy"></div>
+    </div>  
+    <div id="results"></div>
+
+
+    <br>
+    <button id="verify" onclick="validate()">Verify</button>
+    <script>
+        function validate() {
+            var paradata = document.getElementById('paragraph').value;
+            const data = new URLSearchParams();
+            data.append('para', paradata);
+
+            fetch('/grammacheck', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ para: paradata })
+            }).then(response => response.json())
+                .then(data => {
+
+                    const resultDiv = document.getElementById('results');
+                    resultDiv.innerHTML = ' ';
+                    const accuracy = document.getElementById('accuracy');
+                    accuracy.innerHTML = " ";
+                    let numWord = data.numWord.length;
+                    let numErr = data.Result.length
+                    let errCode = numWord - numErr;
+                    var percentageoferr = (errCode/numWord)*100;
+                    const Accuracy = document.createElement('meter');
+                    Accuracy.value = errCode;
+                    Accuracy.max = numWord; 
+                    document.getElementById("accuracy").innerHTML = percentageoferr.toFixed(1)+"% accuracy";
+                    accuracy.appendChild(Accuracy);
+
+                    if (data.Result.length > 0) {
+                        data.Result.forEach(each => {
+                            const ol = document.createElement('ol');
+                            const ul = document.createElement('ul');
+
+                            const messageLi = document.createElement('li');
+                            messageLi.textContent = `Message: ${each.message}`;
+                            const sentenceLi = document.createElement('li');
+                            sentenceLi.textContent = `Sentence: ${each.sentence}`;
+                            const wordLi = document.createElement('li');
+                            wordLi.textContent = `Word: ${each.word}`;
+
+                            ul.appendChild(messageLi);
+                            ul.appendChild(sentenceLi);
+                            ul.appendChild(wordLi);
+                            ol.appendChild(ul);
+                            resultDiv.appendChild(ol);
+                        });
+                    } else {
+                        resultDiv.innerHTML = '<h5>No grammar errors found.</h5>';
+                    }
+                })
+                .catch(error => {
+                    console.log('Error checking grammar:', error);
+                });
+        }
+    </script>
+</body>
+</html>
