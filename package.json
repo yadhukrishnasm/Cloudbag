@@ -1,0 +1,16 @@
+{
+  "name": "cloudbag",
+  "version": "1.0.0",
+  "description": "A student friendly cloud storage web-app for study documentation  and focused learning.",
+  "main": "Node.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "build": "cd client && npm install && npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
