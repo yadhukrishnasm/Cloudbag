@@ -1,0 +1,4 @@
+# .gitignore (Root)
+node_modules/
+.DS_Store
+.env
