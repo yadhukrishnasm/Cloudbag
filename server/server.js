@@ -23,16 +23,14 @@ mongoose.connect('mongodb+srv://admin:root@yadhukrishnasm.hklj5a3.mongodb.net/Cl
 
 async function getUserByUsername(username) {
   try {
-    const databaseUserChecking = await User.findOne({ user : username });
-    console.log(databaseUserChecking);
+    const databaseUserChecking = await User.findOne({ user : username },{'_id' :0, 'user' : 1, 'password' : 1})
+
     if (!databaseUserChecking) {
-      return null;
+      return 1;
+    }else{
+          return databaseUserChecking;
     }
-    
-    return {
-      name: databaseUserChecking.user,
-      // passwordHash: databaseUserChecking.passwordHash, 
-    };
+
   } catch (error) {
     console.error('Error retrieving user:', error);
     throw error;
@@ -45,12 +43,12 @@ app.post('/login', async (req, res) => {
   const { username, password } = req.body;
   try {
     const user = await getUserByUsername(username);
+    if(username == user.user && password == user.password)
     console.log(user);
-    if (!user) {
-      res.json({status:"0"});
-    }
-    res.json({status:"1"});
-
+    else if(user == 1)
+    console.log("User not exists")
+    else
+    console.log("Username and Password Dont match");
     // const validPassword = await bcrypt.compare(password, user.passwordHash);
 
     // if (!validPassword) {
@@ -62,7 +60,6 @@ app.post('/login', async (req, res) => {
     // res.json({ token, user: { username: user.username, /* include only necessary user data */ } });
   } catch (error) {
     console.error('Error during login:', error);
-    res.status(500).json({ message: 'Internal server error' });
   }
 });
 
