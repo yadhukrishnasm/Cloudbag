@@ -1,4 +1,6 @@
 const { Module } = require("module");
+const mongoose = require('mongoose');
+const User = require('../models/user');
 
 async function getUserByUsername(username) 
 {
