@@ -38,7 +38,7 @@ export default function RegisterPage() {
         <label htmlFor="password">Password:</label>
         <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         <label htmlFor="emial">Email:</label>
-        <input type="text" id="email" value={password} onChange={(e) => setemail(e.target.value)} />
+        <input type="text" id="email" value={email} onChange={(e) => setemail(e.target.value)} />
         <button type="submit">Register</button>
         </form>
 

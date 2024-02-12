@@ -22,8 +22,6 @@ async function getUserByUsername(username)
   
   
 const login = async(username,password) => {
-
-    // console.log(req.body)
     try {
 
         const user = await getUserByUsername(username);
