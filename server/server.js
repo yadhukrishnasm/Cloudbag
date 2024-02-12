@@ -11,14 +11,6 @@ const PORT = 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Connect to MongoDB
-mongoose.connect('mongodb+srv://admin:root@yadhukrishnasm.hklj5a3.mongodb.net/Cloudbag')
-  .then(async () => {
-    console.log('Connected to MongoDB');
-  })
-  .catch(err => {
-    console.error('Error connecting to MongoDB:', err);
-  });
 
 
 async function getUserByUsername(username) {
@@ -42,6 +34,18 @@ app.post('/login', async (req, res) => {
   // console.log(req.body)
   const { username, password } = req.body;
   try {
+
+// Connect to MongoDB
+
+    mongoose.connect('mongodb+srv://admin:root@yadhukrishnasm.hklj5a3.mongodb.net/Cloudbag')
+    .then(async () => {
+      console.log('Connected to MongoDB');
+    })
+    .catch(err => {
+      console.error('Error connecting to MongoDB:', err);
+    });
+
+
     const user = await getUserByUsername(username);
     if(username == user.user && password == user.password)
     console.log(user);

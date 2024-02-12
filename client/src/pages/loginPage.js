@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+
 
 function LoginPage() {
   const [username, setUsername] = useState('');
@@ -24,6 +27,7 @@ function LoginPage() {
   };
 
   return (
+    <div>
     <form onSubmit={handleSubmit}>
       <label htmlFor="username">Username:</label>
       <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
@@ -31,6 +35,11 @@ function LoginPage() {
       <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
       <button type="submit">Login</button>
     </form>
+    <p>
+        Don't have an account? 
+        <Link to="/register"> Register here</Link>
+      </p>
+    </div>
   );
 }
 
