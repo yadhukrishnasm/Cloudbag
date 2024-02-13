@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const generateToken = require('./middleware/generateToken.js');
 const Login = require('./routes/login.js');
 const Register = require('./routes/register.js');
+const FileList = require('./routes/filelist.js');
 const dbConnectionMiddleware = require('./middleware/dbConnection');
 const mongoose = require('mongoose')
 const app = express();
@@ -45,6 +46,17 @@ app.post('/register', async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+
+app.post('/filelist',async(req,res)=>{
+  try{
+    const {username} = req.body;
+    const filelist = await FileList(username);
+    res.send(filelist)
+  }catch(error){
+    console.log("Error during view file list ->"+error)
+    res.send("Error")
+  }
+})
 
 
 app.listen(PORT, () => {
