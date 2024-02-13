@@ -25,8 +25,9 @@ const login = async(username,password) => {
     try {
 
         const user = await getUserByUsername(username);
-        if(username == user.user && password == user.password)
-        console.log(user);
+        if(username == user.user && password == user.password){
+            return 1;
+        }
         else if(user == 1)
         console.log("User not exists")
         else

@@ -12,20 +12,23 @@ const PORT = 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
-//app.use(dbConnectionMiddleware);
+dbConnectionMiddleware();
 
-async function DBconnect(){
-  await mongoose.connect('mongodb+srv://admin:root@yadhukrishnasm.hklj5a3.mongodb.net/Cloudbag');
-  console.log('Connected to MongoDB');
-}
-DBconnect();
+// async function DBconnect(){
+//   await mongoose.connect('mongodb+srv://admin:root@yadhukrishnasm.hklj5a3.mongodb.net/Cloudbag');
+//   console.log('Connected to MongoDB');
+// }
+// DBconnect();
 
 
 app.post('/login',async(req, res) => {
   try {
     const { username, password } = req.body;
-    console.log(req.body);
-    await Login(username, password);
+    let status = await Login(username, password)
+    if(status === 1 ){
+      res.json({ message: "Login successful" });
+    }
+      
 
   } catch (error) {
 

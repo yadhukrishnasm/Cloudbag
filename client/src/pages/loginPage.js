@@ -18,7 +18,6 @@ function LoginPage() {
           .then(response => response.json())
           .then(userData => {
             console.log(userData)
-            userData === 0 ?console.log("wrong username and password"): console.log("right username ")
           })
           .catch(error => {
             console.log(error);
