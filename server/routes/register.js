@@ -15,10 +15,13 @@ const Register = async(username,password,email)=>{
             });
 
             newuser.save()
-            .then(()=>{
-                fs.mkdir('./UserData/'+username, err => {
+            .then(async()=>{
+                const databaseid = await User.findOne({user : username},{'_id':1})
+                fs.mkdir('./UserData/'+databaseid._id, err => {
                     if (err) {throw err}
                 console.log('Directory created and user data uploaded') })
+
+                return databaseid;
             })
             .catch((err)=>{console.log(err)})
         }

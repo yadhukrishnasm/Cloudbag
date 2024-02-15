@@ -5,6 +5,7 @@ const generateToken = require('./middleware/generateToken.js');
 const Login = require('./routes/login.js');
 const Register = require('./routes/register.js');
 const FileList = require('./routes/filelist.js');
+const ShareData = require('./routes/sharedata.js');
 const dbConnectionMiddleware = require('./middleware/dbConnection');
 const mongoose = require('mongoose')
 const app = express();
@@ -26,8 +27,8 @@ app.post('/login',async(req, res) => {
   try {
     const { username, password } = req.body;
     console.log(req.body);
-    await Login(username, password);
-
+    const userid = await Login(username, password);
+    res.send(userid);
   } catch (error) {
 
     console.error('Error during login:', error);
@@ -39,8 +40,8 @@ app.post('/login',async(req, res) => {
 app.post('/register', async (req, res) => {
   try {
     const { username, password, email } = req.body;
-    await Register(username, password, email);
-
+    const userid = await Register(username, password, email);
+    res.send(userid);
   } catch (error) {
     console.error('Error during registration:', error);
     res.status(500).json({ message: 'Internal server error' });
@@ -49,15 +50,26 @@ app.post('/register', async (req, res) => {
 
 app.post('/filelist',async(req,res)=>{
   try{
-    const {username} = req.body;
-    const filelist = await FileList(username);
-    res.send(filelist)
+    const {userid} = req.body;
+    const filelist = await FileList(userid);
+    res.send(filelist);
   }catch(error){
     console.log("Error during view file list ->"+error)
     res.send("Error")
   }
 })
 
+
+app.post('/sharedata',async(req,res)=>{
+  try{
+    const {userid,filename,resUsername} = req.body;
+    const shareddata = await ShareData(userid,filename,resUsername);
+    res.send(shareddata);
+  }catch(error){
+    console.log("Error during data sharing ->"+error)
+    res.send("Error")
+  }
+})
 
 app.listen(PORT, () => {
 
