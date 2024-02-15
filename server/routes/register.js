@@ -3,7 +3,7 @@ const fs = require('fs')
 
 const Register = async(username,password,email)=>{
     try{
-
+        console.log(username,password,email)
         const databaseUsername = await User.findOne({user : username},{'_id' : 0, 'user' : 1})
         const databaseEmail = await User.findOne({email : email},{'_id' : 0, 'email' : 1})
 
@@ -14,17 +14,20 @@ const Register = async(username,password,email)=>{
                 email : email
             });
 
-            newuser.save()
-            .then(async()=>{
-                const databaseid = await User.findOne({user : username},{'_id':1})
-                fs.mkdir('./UserData/'+databaseid._id, err => {
-                    if (err) {throw err}
-                console.log('Directory created and user data uploaded') })
-
-                return databaseid;
-            })
-            .catch((err)=>{console.log(err)})
-        }
+            await newuser.save()  
+                .then(() => {
+                    fs.promises.mkdir('./UserData/' + username, { recursive: true })
+                        .then(()=>{
+                            console.log('Directory created and user data uploaded');
+                        }) 
+                        .catch((error)=>{
+                            console.error('Error creating directory:', error);
+                        })
+                })
+                .catch((err)=>{
+                    console.error("Registration error" + err);
+                })
+            }
         else if(!databaseEmail)
         console.log("Username exists")
         else
