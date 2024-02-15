@@ -15,10 +15,12 @@ const Register = async(username,password,email)=>{
             });
 
             await newuser.save()  
-                .then(() => {
-                    fs.promises.mkdir('./UserData/' + username, { recursive: true })
+                .then(async() => {
+                    const userid = await User.findOne({user : username},{'_id' : 1})
+                    fs.promises.mkdir('./UserData/' + userid._id, { recursive: true })
                         .then(()=>{
                             console.log('Directory created and user data uploaded');
+                            return userid;
                         }) 
                         .catch((error)=>{
                             console.error('Error creating directory:', error);
