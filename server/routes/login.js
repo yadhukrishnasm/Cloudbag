@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 async function getUserByUsername(username) 
 {
     try {
-      const databaseUserChecking = await User.findOne({ user : username },{'_id' :0, 'user' : 1, 'password' : 1})
+      const databaseUserChecking = await User.findOne({ user : username },{'_id' : 1, 'user' : 1, 'password' : 1})
   
       if (!databaseUserChecking) {
         return 1;
@@ -26,8 +26,10 @@ const login = async(username,password) => {
 
         const user = await getUserByUsername(username);
         if(username == user.user && password == user.password){
-            return 1;
+           console.log(user);
+           return user._id;
         }
+
         else if(user == 1)
         console.log("User not exists")
         else
