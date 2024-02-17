@@ -16,6 +16,8 @@
     "fs": "^0.0.1-security",
     "gramma": "^1.6.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.1.0"
+    "mongoose": "^8.1.0",
+    "wikipedia": "^2.1.2",
+    "wordpos": "^2.1.0"
   }
 }

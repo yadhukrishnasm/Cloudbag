@@ -8,6 +8,7 @@ const FileList = require('./routes/filelist.js');
 const ShareData = require('./routes/sharedata.js');
 const GrammaCheck = require('./routes/grammar.js');
 const DeleteFile = require('./routes/deletefile.js');
+const AskAi = require('./routes/askai.js')
 const dbConnectionMiddleware = require('./middleware/dbConnection');
 const mongoose = require('mongoose')
 const app = express();
@@ -93,6 +94,17 @@ app.post('/grammacheck',async(req,res)=>{
   }catch(error){
     console.log("Error is grammar checking->"+error)
     res.send("Error")
+  }
+})
+
+app.post('/askai',async(req,res)=>{
+  const {ques} = req.body;
+  try{
+    const answer = await AskAi(ques);
+    console.log(answer)
+    res.send(answer)
+  }catch(error){
+    console.log("Error in Ai->"+error)
   }
 })
 
