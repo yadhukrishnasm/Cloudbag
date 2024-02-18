@@ -59,7 +59,7 @@ export const Notes = () => {
 
   return (
     <div>
-      <h1 id="notit">notit extension</h1>
+      <h1 id="notit">note</h1> 
       <div className="container">
         <textarea
           name="note"

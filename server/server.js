@@ -21,14 +21,7 @@ const PORT = 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
-dbConnectionMiddleware();
-
-// async function DBconnect(){
-//   await mongoose.connect('mongodb+srv://admin:root@yadhukrishnasm.hklj5a3.mongodb.net/Cloudbag');
-//   console.log('Connected to MongoDB');
-// }
-// DBconnect();
-
+dbConnectionMiddleware()
 
 app.post('/login',async(req, res) => {
   try {

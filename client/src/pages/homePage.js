@@ -1,11 +1,11 @@
 import React from 'react';
 import { Notes } from '../modules/notes'
+import {Navbar} from '../components/navbar'
 
 function HomePage() {
   return (
     <div>
-      <h1>Welcome to the homepage!</h1>
-      {/* Content for the homepage */}
+      <Navbar/> 
       <Notes/>
     </div>
   );
