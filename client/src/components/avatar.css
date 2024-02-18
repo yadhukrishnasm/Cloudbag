@@ -1,0 +1,14 @@
+.avatar{
+    height: 40px;
+    width: 40px;
+    border-radius: 100px;
+    border: 0;
+    overflow: hidden;
+    background-image: url("../../public/images.jpg");
+
+}
+
+#image{
+    width: fit-content;
+    height: fit-content;
+}
