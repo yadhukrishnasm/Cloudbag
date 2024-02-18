@@ -1,4 +1,4 @@
-Introduction:
+Introduction:<br>
 Embark on a transformative digital journey with Cloudbag, an innovative web app developed as our college final year project. In collaboration with my talented teammates, YadhuKrishna and Karthik, we've created a dynamic and feature-rich platform, all hosted and powered by the cloud.
 Tech Stack💻:
 Cloudbag leverages the capabilities of the cloud, utilizing Node.js, React.js, JavaScript, HTML, CSS, MongoDB, and the Express.js framework. Figma was employed for seamless and intuitive design, ensuring a user-friendly experience with the added benefit of cloud-based scalability.
