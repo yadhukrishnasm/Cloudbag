@@ -6,6 +6,9 @@ const Login = require('./routes/login.js');
 const Register = require('./routes/register.js');
 const FileList = require('./routes/filelist.js');
 const ShareData = require('./routes/sharedata.js');
+const GrammaCheck = require('./routes/grammar.js');
+const DeleteFile = require('./routes/deletefile.js');
+const AskAi = require('./routes/askai.js')
 const dbConnectionMiddleware = require('./middleware/dbConnection');
 const mongoose = require('mongoose')
 const app = express();
@@ -61,6 +64,40 @@ app.post('/sharedata',async(req,res)=>{
   }catch(error){
     console.log("Error during data sharing ->"+error)
     res.send("Error")
+  }
+})
+
+app.post('/deletefile',async(req,res)=>{
+  const {userid,filename} = req.body;
+  try{
+    const deletefile = await DeleteFile(userid,filename);
+    console.log(deletefile)
+    res.send(deletefile)
+  }catch(error){
+    console.log("Error in deleting file->"+error)
+  }
+})
+
+app.post('/grammacheck',async(req,res)=>{
+  try{
+    const {para} = req.body;
+    const grammacheck = await GrammaCheck(para);
+    console.log(grammacheck)
+    res.send(grammacheck);
+  }catch(error){
+    console.log("Error is grammar checking->"+error)
+    res.send("Error")
+  }
+})
+
+app.post('/askai',async(req,res)=>{
+  const {ques} = req.body;
+  try{
+    const answer = await AskAi(ques);
+    console.log(answer)
+    res.send(answer)
+  }catch(error){
+    console.log("Error in Ai->"+error)
   }
 })
 
