@@ -4,6 +4,9 @@ import HomePage from './pages/homePage';
 import RegisterPage from './pages/registerPage'
 
 function App() {
+
+console.clear();
+
   return (
     <BrowserRouter>
       <Routes>
