@@ -24,7 +24,7 @@ app.post('/login',async(req, res) => {
     const { username, password } = req.body;
     console.log(req.body);
     const userid = await Login(username, password);
-    res.send(userid);
+    res.json({success:true, redirect: `/main_homepage?username=${username}` });
   } catch (error) {
 
     console.error('Error during login:', error);

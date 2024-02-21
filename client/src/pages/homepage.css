@@ -1,0 +1,18 @@
+.viewer{
+    height: 89vh;
+    width: 70ch;
+    float: left;
+    padding: 10pcx;
+}
+.sidebar{
+    border-left:#750080 solid 0.5px;
+    width: 29vw;
+    height: 89vh;
+    float: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.notes{
+    border-top: 1px solid #750080;
+}

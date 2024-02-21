@@ -5,7 +5,7 @@
     border: 0;
     overflow: hidden;
     background-image: url("../../public/images.jpg");
-
+    background-size: cover;
 }
 
 #image{

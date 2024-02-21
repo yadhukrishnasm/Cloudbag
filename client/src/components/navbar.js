@@ -3,17 +3,24 @@ import {Link} from 'react-router-dom';
 import Avatar from './avatar';
 import './navbar.css';
 
-export const Navbar = ()=>{
+export const Navbar = ({username})=>{
+  ;
   return (
     <div>
       <div className="nav">
-        <Link to ="/home" id='logo'>Cloudbag</Link>
-        <p id='links'>
-          <Link to ="/ar">AR</Link>
-          <Link to ="/Cloudspell">Cloudspell</Link>
-          <p>Username</p>
-          <Avatar/> 
-        </p>
+        <div id='left'>
+          <Link to ="/home" id="logo">Cloudbag</Link>
+        </div>
+        <div id="right">
+            <span id='links'>
+              <Link className ='link' to ="/ar">AR</Link>
+              <Link className ='link' to ="/Cloudspell">Cloudspell</Link>
+            </span>
+            <span id='user'>
+              <span id='username'>{username}</span>
+              <Avatar/>  
+            </span>
+        </div>
       </div>
     </div>
   )
