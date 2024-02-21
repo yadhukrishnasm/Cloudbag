@@ -10,6 +10,7 @@ const GrammaCheck = require('./routes/grammar.js');
 const DeleteFile = require('./routes/deletefile.js');
 const AskAi = require('./routes/askai.js');
 const Upload = require('./routes/upload.js');
+const DeleteAccount  = require('./routes/deleteaccount.js');
 const dbConnectionMiddleware = require('./middleware/dbConnection');
 const mongoose = require('mongoose')
 const multer = require('multer')
@@ -41,8 +42,8 @@ app.post('/login',async(req, res) => {
 app.post('/register', async (req, res) => {
   try {
     const { username, password, email } = req.body;
-    const userid = await Register(username, password, email);
-    res.send(userid);
+    const response = await Register(username, password, email);
+    res.send(response);
   } catch (error) {
     console.error('Error during registration:', error);
     res.status(500).json({ message: 'Internal server error' });
@@ -99,7 +100,6 @@ app.post('/askai',async(req,res)=>{
   const {ques} = req.body;
   try{
     const answer = await AskAi(ques);
-    console.log(answer)
     res.send(answer)
   }catch(error){
     console.log("Error in Ai->"+error)

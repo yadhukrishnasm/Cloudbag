@@ -30,10 +30,14 @@ const Register = async(username,password,email)=>{
                     console.error("Registration error" + err);
                 })
             }
-        else if(!databaseEmail)
-        console.log("Username exists")
-        else
-        console.log("Email exists")
+        else if(!databaseEmail){
+            console.log("Username exists")
+            return "Username exists"
+        }
+        else{
+           console.log("Email exists") 
+           return "Email exists"
+        }
     }catch(err){console.log("Register function err -> "+err)}
 }
 
