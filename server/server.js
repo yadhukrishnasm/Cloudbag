@@ -8,9 +8,13 @@ const FileList = require('./routes/filelist.js');
 const ShareData = require('./routes/sharedata.js');
 const GrammaCheck = require('./routes/grammar.js');
 const DeleteFile = require('./routes/deletefile.js');
-const AskAi = require('./routes/askai.js')
+const AskAi = require('./routes/askai.js');
+const Upload = require('./routes/upload.js');
 const dbConnectionMiddleware = require('./middleware/dbConnection');
 const mongoose = require('mongoose')
+const multer = require('multer')
+const path = require('path')
+
 const app = express();
 const PORT = 3000;
 
@@ -100,6 +104,25 @@ app.post('/askai',async(req,res)=>{
     console.log("Error in Ai->"+error)
   }
 })
+
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+      cb(null, 'uploads/') // Save files to the uploads folder
+  },
+  filename: function (req, file, cb) {
+      cb(null, file.originalname) // Keep the original file name
+  }
+});
+const upload = multer({ storage: storage })
+app.post('/upload', upload.single('file'),(req, res) => {
+    const userid = req.body.userid;
+    const subname = req.body.subname;
+    const filename = req.file.originalname;
+    const uploadsres = Upload(userid,subname,filename);
+
+    res.send('File uploaded successfully:'+uploadsres);
+});
 
 app.listen(PORT, () => {
 
