@@ -7,7 +7,6 @@ import Drawer from '../components/drawer';
 
 const HomePage = () => {
   const { username } = useParams();
-  console.log({username})
   return (
     <div>
       <Navbar username = {username} /> 
@@ -26,7 +25,7 @@ const HomePage = () => {
           </div>
         </div>
         <div className="notes">
-          {/* <Notes/> */}
+          <Notes/>
         </div>
       </div>
 
