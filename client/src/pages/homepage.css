@@ -1,8 +1,8 @@
 .viewer{
     height: 89vh;
-    width: 70ch;
+    width: max-content;
     float: left;
-    padding: 10pcx;
+    padding: 10px;
 }
 .sidebar{
     border-left:#750080 solid 0.5px;
@@ -11,8 +11,13 @@
     float: right;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+    position: fixed;
+    right: 0px;
+    top: 10vh;
 }
-.notes{
-    border-top: 1px solid #750080;
+.chat{
+    height: fit-content;
+
+    border-bottom: 1px solid #750080;
 }

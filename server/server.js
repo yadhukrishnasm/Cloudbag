@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const generateToken = require('./middleware/generateToken.js');
 const Login = require('./routes/login.js');
 const Register = require('./routes/register.js');
 const FileList = require('./routes/filelist.js');
@@ -11,7 +10,6 @@ const DeleteFile = require('./routes/deletefile.js');
 const AskAi = require('./routes/askai.js');
 const Upload = require('./routes/upload.js');
 const dbConnectionMiddleware = require('./middleware/dbConnection');
-const mongoose = require('mongoose')
 const multer = require('multer')
 const path = require('path')
 
@@ -42,7 +40,7 @@ app.post('/register', async (req, res) => {
   try {
     const { username, password, email } = req.body;
     const userid = await Register(username, password, email);
-    res.send(userid);
+    res.send.json({userid : userid});
   } catch (error) {
     console.error('Error during registration:', error);
     res.status(500).json({ message: 'Internal server error' });
