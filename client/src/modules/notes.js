@@ -2,78 +2,85 @@ import React, { useState, useEffect } from 'react';
 
 export const Notes = () => {
   const [note, setNote] = useState('');
+  const [notesFromServer, setNotesFromServer] = useState([]);
 
   const saveNote = () => {
     if (note.trim() !== '') {
-      addToStorage(note);
+      addToServer(note);
       setNote('');
     }
   };
 
   const clearWhole = () => {
-    localStorage.clear();
-    // Remove all notes from the UI
-    const savedNotes = document.querySelectorAll('.savedNote');
-    savedNotes.forEach((note) => note.remove());
+    clearNotesOnServer();
+
+    setNotesFromServer([]);
   };
 
-  const addToStorage = (newText) => {
-    const existingTexts = JSON.parse(localStorage.getItem('textsArray')) || [];
-    existingTexts.push(newText);
-    localStorage.setItem('textsArray', JSON.stringify(existingTexts));
-    createNoteUI(newText);
+  const addToServer = (newText) => {
+    fetch('http://localhost:3000/saveNote', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ note: newText })
+    })
+      .then(response => response.json())
+      .then(dbsavedNote => {
+        setNotesFromServer(prevNotes => [...prevNotes, dbsavedNote.note]);
+      })
+      .catch(error => {
+        console.error('Error during saving note:', error);
+      });
   };
 
-  const createNoteUI = (text) => {
-    const container = document.querySelector('.container');
-
-    const divbox = document.createElement('div');
-    divbox.className = 'savedNote';
-    divbox.innerHTML = text;
-
-    const delbtn = document.createElement('button');
-    delbtn.className = 'delete';
-    delbtn.textContent = 'remove';
-    delbtn.addEventListener('click', () => {
-      divbox.remove();
-      removeFromStorage(text);
-    });
-
-    divbox.appendChild(delbtn);
-    container.appendChild(divbox);
-  };
-
-  const removeFromStorage = (textToRemove) => {
-    const existingTexts = JSON.parse(localStorage.getItem('textsArray')) || [];
-    const updatedTexts = existingTexts.filter((text) => text !== textToRemove);
-    localStorage.setItem('textsArray', JSON.stringify(updatedTexts));
+  const clearNotesOnServer = () => {
+    // Make a request to your server to clear all notes
+    fetch('http://localhost:3000/clearNotes', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then(response => response.json())
+      .then(responseData => {
+        console.log(`response of saved notes from server :: ${responseData}`)
+      })
+      .catch(error => {
+        console.error('Error during clearing notes ::', error);
+      });
   };
 
   useEffect(() => {
-    // Load notes from localStorage on component mount
-    if (localStorage.getItem('textsArray')) {
-      const storedTexts = JSON.parse(localStorage.getItem('textsArray'));
-      storedTexts.forEach((text) => createNoteUI(text));
-    }
+    // Retrieve notes from the server on page load
+    fetch('http://localhost:3000/getNotes')
+      .then(response => response.json())
+      .then(notes => {
+        setNotesFromServer(notes);
+      })
+      .catch(error => {
+        console.error('Error during getting notes:', error);
+      });
   }, []);
 
   return (
     <div>
-      <h1 id="notit">note</h1> 
       <div className="container">
-        <textarea
+        <textarea 
           name="note"
           id="note"
           cols="30"
-          rows="10"
+          rows="2"
           value={note}
           onChange={(e) => setNote(e.target.value)}
         ></textarea>
       </div>
       <button onClick={saveNote}>Save</button>
       <button onClick={clearWhole}>Clear</button>
+
+      <div className="container">
+        {notesFromServer.map((text, index) => (
+          <div key={index} className="savedNote">
+            {text}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
-
-

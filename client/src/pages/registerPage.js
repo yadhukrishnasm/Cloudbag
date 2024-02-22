@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 
 export default function RegisterPage() {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setemail] = useState('');
+    const navigate = useNavigate();
     
     const handleSubmit = (e) => {
           e.preventDefault();
@@ -19,10 +20,15 @@ export default function RegisterPage() {
                 email: email
             })
           })
-            .then(response => response.json())
             .then(userData => {
               console.log(userData)
-              userData === 0 ?console.log("Not registered"): console.log("registered successfully ")
+              if(userData === 0 ){
+                console.log("Not registered")
+              }
+              else{
+                console.log("registered successfully ")
+                navigate('/')
+              }
             })
             .catch(error => {
               console.log(error);

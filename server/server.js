@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const generateToken = require('./middleware/generateToken.js');
 const Login = require('./routes/login.js');
 const Register = require('./routes/register.js');
 const FileList = require('./routes/filelist.js');
@@ -12,7 +11,6 @@ const AskAi = require('./routes/askai.js');
 const Upload = require('./routes/upload.js');
 const DeleteAccount  = require('./routes/deleteaccount.js');
 const dbConnectionMiddleware = require('./middleware/dbConnection');
-const mongoose = require('mongoose')
 const multer = require('multer')
 const path = require('path')
 

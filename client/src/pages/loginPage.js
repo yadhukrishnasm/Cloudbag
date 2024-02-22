@@ -25,7 +25,7 @@ function LoginPage() {
           console.error('Login failed:', userData.message);
         }
       })
-      .catch(error => {
+      .catch(error => { 
         // Handle network or other errors
         console.error('Error during login:', error);
       });
