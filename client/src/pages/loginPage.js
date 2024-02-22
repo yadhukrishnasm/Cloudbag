@@ -18,8 +18,7 @@ function LoginPage() {
       .then(userData => {
         console.log(userData);
 
-        if (userData.success) {
-          console.log(userData)
+        if (userData.status === 1) {
            navigate(`/main_homepage/${username}`);
         } else {
           console.error('Login failed:', userData.message);
