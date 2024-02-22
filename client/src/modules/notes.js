@@ -18,7 +18,7 @@ export const Notes = () => {
   };
 
   const addToServer = (newText) => {
-    fetch('http://localhost:3000/saveNote', {
+    fetch('http://localhost:5000/saveNote', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ note: newText })
@@ -34,7 +34,7 @@ export const Notes = () => {
 
   const clearNotesOnServer = () => {
     // Make a request to your server to clear all notes
-    fetch('http://localhost:3000/clearNotes', {
+    fetch('http://localhost:5000/clearNotes', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' }
     })

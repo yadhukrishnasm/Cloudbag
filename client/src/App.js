@@ -9,6 +9,7 @@ console.clear();
 
   return (
     <BrowserRouter>
+
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/main_homepage/:username" element={<HomePage />} />

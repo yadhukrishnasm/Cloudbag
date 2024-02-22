@@ -11,10 +11,10 @@ const HomePage = () => {
   return (
     <div>
       <Navbar username = {username} /> 
-      <Drawer/>
+      {/* <Drawer/> */}
       <div className="viewer">
         pdf viewer
-        <iframe src="" width="100%" height="600px"></iframe>
+        {/* <iframe src="" width="100%" height="600px"></iframe> */}
       </div>
 
 
@@ -26,7 +26,7 @@ const HomePage = () => {
           </div>
         </div>
         <div className="notes">
-          <Notes/>
+          {/* <Notes/> */}
         </div>
       </div>
 

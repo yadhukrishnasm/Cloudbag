@@ -4,7 +4,7 @@ export default function Askai() {
     const [response , setResponse] = useState('');
 
     function sendQuestion(question){
-        fetch('http://localhost:3000/askai', {
+        fetch('http://localhost:5000/askai', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ques: question })
