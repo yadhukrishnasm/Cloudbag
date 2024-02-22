@@ -20,7 +20,7 @@ const Register = async(username,password,email)=>{
                     fs.promises.mkdir('./UserData/' + userid._id, { recursive: true })
                         .then(()=>{
                             console.log('Directory created and user data uploaded');
-                            return userid;
+                            return 1;
                         }) 
                         .catch((error)=>{
                             console.error('Error creating directory:', error);
@@ -30,10 +30,14 @@ const Register = async(username,password,email)=>{
                     console.error("Registration error" + err);
                 })
             }
-        else if(!databaseEmail)
-        console.log("Username exists")
-        else
-        console.log("Email exists")
+        else if(!databaseEmail){
+            console.log("Username exists")
+            return 2
+        }
+        else{
+           console.log("Email exists") 
+           return null
+        }
     }catch(err){console.log("Register function err -> "+err)}
 }
 
