@@ -2,8 +2,9 @@ import React from 'react';
 import { Notes } from '../modules/notes'
 import {Navbar} from '../components/navbar'
 import { useParams } from 'react-router-dom';
+import Askai from '../modules/askai';
 import './homepage.css'
-import Drawer from '../components/drawer';
+// import Drawer from '../components/drawer';
 
 const HomePage = () => {
   const { username } = useParams();
@@ -20,8 +21,7 @@ const HomePage = () => {
       <div className="sidebar">
         <div className="chat">
           <div id='chatbot'>
-          chat bot
-
+            <Askai />
           </div>
         </div>
         <div className="notes">

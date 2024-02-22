@@ -3,7 +3,7 @@ const WordPOS = require('wordpos');
 const wordpos = new WordPOS();
 
 const AskAi = async (ques) => {
-    let prompt = ''; // Initialize prompt outside the try-catch block
+    let prompt = ''; 
   try {
     const result = await new Promise((resolve, reject) => {
       wordpos.getPOS(ques, (result) => {

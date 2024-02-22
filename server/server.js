@@ -109,6 +109,7 @@ app.post('/grammacheck',async(req,res)=>{
 
 app.post('/askai',async(req,res)=>{
   const {ques} = req.body;
+  console.log({ques});
   try{
     const answer = await AskAi(ques);
     res.send(answer)
