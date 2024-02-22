@@ -26,9 +26,10 @@ app.post('/login',async(req, res) => {
   try {
     const { username, password } = req.body;
     console.log(req.body);
-    const userid = await Login(username, password);
-    console.log(userid)
-    res.json({success: userid});
+    const response = await Login(username, password);
+    console.log(response)
+    res.send(response)
+    //res.json({success: userid});
   } catch (error) {
 
     console.error('Error during login:', error);
@@ -56,6 +57,18 @@ app.post('/filelist',async(req,res)=>{
   }catch(error){
     console.log("Error during view file list ->"+error)
     res.send("Error")
+  }
+})
+
+
+app.post('/deleteacc',async(req,res)=>{
+  try{
+    const {userid} = req.body;
+    console.log(userid)
+    const response = await DeleteAccount(userid);
+    res.send(response)
+  }catch(error){
+    console.log("Error in deleting account ->"+error)
   }
 })
 
