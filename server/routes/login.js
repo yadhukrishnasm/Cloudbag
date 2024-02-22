@@ -30,10 +30,16 @@ const login = async(username,password) => {
            return user._id;
         }
 
-        else if(user == 1)
-        console.log("User not exists")
-        else
-        console.log("Username and Password Dont match");
+        else if(user == 1){
+          console.log("User not exists") 
+          return "User not exists"
+        }
+        
+        else{
+          console.log("Username and Password Dont match");
+          return "Username and Password Dont match"
+        }
+        
         // const validPassword = await bcrypt.compare(password, user.passwordHash);
     
         // if (!validPassword) {
