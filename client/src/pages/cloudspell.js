@@ -1,4 +1,5 @@
 import React from 'react';
+import { Navbar } from '../components/navbar'
 
 export default function Cloudspell() {
     function validate(event) {
@@ -76,13 +77,14 @@ export default function Cloudspell() {
 
   return (
     <div>
-      <h1>Write Essay</h1><br />
-      <textarea id="paragraph" name="para" placeholder="Try it" rows="10" cols="50" spellCheck="true"></textarea>
-      <div id="accur-div">
-        <div id="accuracy"></div>
-      </div>
-      <button id="verify" onClick={(e) => validate(e)}>Verify</button>
-      <div id="results"></div>
-    </div>
+        <Navbar/>
+        <h1>Write Essay</h1><br />
+        <textarea id="paragraph" name="para" placeholder="Try it" rows="10" cols="50" spellCheck="true"></textarea>
+        <div id="accur-div">
+            <div id="accuracy"></div>
+        </div>
+        <button id="verify" onClick={(e) => validate(e)}>Verify</button>
+        <div id="results"></div>
+        </div>
   );
 }

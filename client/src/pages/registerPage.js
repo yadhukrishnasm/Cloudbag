@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Link,useNavigate } from 'react-router-dom';
+import { Navbar } from '../components/navbar'
+
 
 export default function RegisterPage() {
 
@@ -38,19 +40,20 @@ export default function RegisterPage() {
 
   return (
     <div>
-        <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
-        <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
-        <label htmlFor="password">Password:</label>
-        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <label htmlFor="emial">Email:</label>
-        <input type="text" id="email" value={email} onChange={(e) => setemail(e.target.value)} />
-        <button type="submit">Register</button>
-        </form>
+      <Navbar/>
+      <form onSubmit={handleSubmit}>
+      <label htmlFor="username">Username:</label>
+      <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+      <label htmlFor="password">Password:</label>
+      <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      <label htmlFor="emial">Email:</label>
+      <input type="text" id="email" value={email} onChange={(e) => setemail(e.target.value)} />
+      <button type="submit">Register</button>
+      </form>
 
-        <p>
-            already registered? <Link to="/">Login</Link>
-        </p>
+      <p>
+          already registered? <Link to="/">Login</Link>
+      </p>
 
     </div>
 

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { Navbar } from '../components/navbar'
+
 
 function LoginPage() {
   const [username, setUsername] = useState('');
@@ -32,6 +34,7 @@ function LoginPage() {
 
   return (
     <div>
+      <Navbar/>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username:</label>
         <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
