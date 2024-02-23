@@ -14,7 +14,7 @@ export const Navbar = ({username})=>{
         <div id="right">
             <span id='links'>
               <Link className ='link' to ="/ar">AR</Link>
-              <Link className ='link' to ="/Cloudspell">Cloudspell</Link>
+              <Link className ='link' to ="/gramma">Cloudspell</Link>
             </span>
             <span id='user'>
               <span id='username'>{username}</span>

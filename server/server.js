@@ -12,7 +12,7 @@ const Upload = require('./routes/upload.js');
 const DeleteAccount  = require('./routes/deleteaccount.js');
 const dbConnectionMiddleware = require('./middleware/dbConnection');
 const multer = require('multer')
-const path = require('path')
+
 
 const app = express();
 const PORT = 5000;
@@ -117,7 +117,6 @@ app.post('/askai',async(req,res)=>{
     console.log("Error in Ai->"+error)
   }
 })
-
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
