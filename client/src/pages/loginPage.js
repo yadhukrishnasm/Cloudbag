@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Navbar } from '../components/navbar'
-
+import { Navbar } from '../components/navbar';
+import './loginpage.css';
 
 function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,36 +18,44 @@ function LoginPage() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username: username, password: password })
     })
-      .then(response => response.json())
-      .then(userData => {
-        console.log(userData);
+    .then(response => response.json())
+    .then(userData => {
+      console.log(userData);
 
-        if (userData.status === 1) {
-           navigate(`/main_homepage/${username}`);
-        } else {
-          console.error('Login failed:', userData.message);
-        }
-      })
-      .catch(error => { 
-        // Handle network or other errors
-        console.error('Error during login:', error);
-      });
+      if (userData.status === 1) {
+        navigate(`/main_homepage/${username}`);
+      } else {
+        console.error('Login failed:', userData.message);
+      }
+    })
+    .catch(error => { 
+      console.error('Error during login:', error);
+    });
   };
 
   return (
     <div>
-      <Navbar/>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
-        <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
-        <label htmlFor="password">Password:</label>
-        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <button type="submit">Login</button>
-      </form>
-      <p>
-        Don't have an account?
-        <Link to="/register"> Register here</Link>
-      </p>
+      <Navbar />
+      <div className="container">
+        <div className="loginForm">
+          <form onSubmit={handleSubmit}>
+            <p>
+              
+              <input type="text" id="username" placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)} /><br/>
+            </p>
+            <p>
+
+              <input type="password" id="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} /> <br />
+            </p>
+            <button type="submit">Login</button><br />
+          </form>
+          <p id='toRegister'>
+      
+            Don't have an account?
+            <Link to="/register" id='register'> Register here</Link>
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

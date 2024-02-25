@@ -49,15 +49,23 @@ export default function Askai() {
       });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const question = document.getElementById('note').value;
+    sendQuestion(question);
+  };
+
   return (
     <div>
-      <textarea
-        name="note"
-        id="note"
-        cols="30"
-        rows="2"
-      ></textarea>
-      <button id='ques-search' onClick={sendQuestion}>Send</button>
+      <form onSubmit={handleSubmit}>
+        <textarea
+          name="note"
+          id="note"
+          cols="30"
+          rows="2"
+        ></textarea>
+        <button id='ques-search' type="submit">Send</button>
+      </form>
       <button onClick={startListening} disabled={isListening}>
         Start Audio Search
       </button>

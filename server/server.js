@@ -103,7 +103,7 @@ app.post('/grammacheck',async(req,res)=>{
     res.send(grammacheck);
   }catch(error){
     console.log("Error is grammar checking->"+error)
-    res.send("Error")
+    res.send("Error") 
   }
 })
 
