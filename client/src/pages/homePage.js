@@ -3,7 +3,7 @@ import { Notes } from '../modules/notes'
 import {Navbar} from '../components/navbar'
 import { useParams } from 'react-router-dom';
 import Askai from '../modules/askai';
-import './homepage.css'
+import './styles/homepage.css'
 // import Drawer from '../components/drawer';
 
 const HomePage = () => {

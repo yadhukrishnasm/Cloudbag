@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Navbar } from '../components/navbar';
-import './loginpage.css';
+import './styles/loginpage.css';
 
 function LoginPage() {
   const [username, setUsername] = useState('');
@@ -35,9 +35,11 @@ function LoginPage() {
 
   return (
     <div>
-      <Navbar />
-      <div className="container">
+      {/* <Navbar /> */}
+      <div className="logincontainer">
         <div className="loginForm">
+          <p className='Cloudbag-head'>Cloudbag</p>
+          <h3>Login.</h3>
           <form onSubmit={handleSubmit}>
             <p>
               
@@ -47,7 +49,7 @@ function LoginPage() {
 
               <input type="password" id="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} /> <br />
             </p>
-            <button type="submit">Login</button><br />
+            <button type="submit" className='loginButton'>Login</button><br />
           </form>
           <p id='toRegister'>
       
@@ -61,3 +63,9 @@ function LoginPage() {
 }
 
 export default LoginPage;
+
+
+
+
+
+  

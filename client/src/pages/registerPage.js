@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Link,useNavigate } from 'react-router-dom';
-import { Navbar } from '../components/navbar'
-
+import './styles/registerPage.css'
 
 export default function RegisterPage() {
 
@@ -40,21 +39,33 @@ export default function RegisterPage() {
 
   return (
     <div>
-      <Navbar/>
-      <form onSubmit={handleSubmit}>
-      <label htmlFor="username">Username:</label>
-      <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
-      <label htmlFor="password">Password:</label>
-      <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <label htmlFor="emial">Email:</label>
-      <input type="text" id="email" value={email} onChange={(e) => setemail(e.target.value)} />
-      <button type="submit">Register</button>
-      </form>
+      {/* <Navbar /> */}
+      <div className="registercontainer">
+        <div className="registerForm">
+          <p className='Cloudbag-registerhead'>Cloudbag</p>
+          <h3>Register here!!</h3>
+          <form onSubmit={handleSubmit}>
+            <p>
+              
+              <input type="text" id="username" placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)} /><br/>
+            </p>
+            <p>
 
-      <p>
-          already registered? <Link to="/">Login</Link>
-      </p>
+              <input type="password" id="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} /> <br />
+            </p>
+            <p>
 
+              <input type="text" id="email" value={email} placeholder='email' onChange={(e) => setemail(e.target.value)}/> <br />
+            </p>
+            <button type="submit"className='registerButton'>Register</button><br />
+          </form>
+          <p id='toLogin'>
+      
+            Already registered?
+            <Link to="/"id='toLogin'> Login</Link>
+          </p>
+        </div>
+      </div>
     </div>
 
   )
