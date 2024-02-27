@@ -13,7 +13,7 @@ try{
     .then(()=>{return 1}); 
 
 }catch(err){
-
+console.log("Error in account deletion ->"+err)
 }
 }
 
