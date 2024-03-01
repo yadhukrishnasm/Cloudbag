@@ -1,6 +1,9 @@
 const wiki = require('wikipedia');
 const WordPOS = require('wordpos');
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 const wordpos = new WordPOS();
+
+const genAI = new GoogleGenerativeAI("AIzaSyBTGgr8wuiikhSZcCr4cWcsdrTtnwIn6bo");
 
 const AskAi = async (ques) => {
     let prompt = ''; 
@@ -49,12 +52,26 @@ const AskAi = async (ques) => {
           return { answer: summary.extract };
         }
       } else {
+        return gemini(ques);
         return { answer: 'S1 No information' };
       }
     } catch (error) {
+      return gemini(ques);
       return { answer: 'S2 No information' };
+      
     }
   }
 };
+
+
+async function gemini(prompt) {
+  // For text-only input, use the gemini-pro model
+  const model = genAI.getGenerativeModel({ model: "gemini-pro"});
+  const result = await model.generateContent(prompt);
+  const response = await result.response;
+  const text = response.text();
+  return {answer : text}
+}
+
 
 module.exports = AskAi;
