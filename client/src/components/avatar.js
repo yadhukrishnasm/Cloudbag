@@ -16,10 +16,10 @@ const show =()=>{
 
       {dropdown && (
         <div className="dropdown">
-            <p id="sign-out">
+            <p class="dropdown-button" id="sign-out">
               sign-out
             </p>
-            <p id="delete">
+            <p class="dropdown-button" id="delete">
               Delete account
             </p>
           </div>

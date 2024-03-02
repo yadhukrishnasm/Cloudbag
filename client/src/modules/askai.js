@@ -58,12 +58,12 @@ export default function Askai() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <textarea
-          name="note"
-          id="note"
-          cols="30"
-          rows="2"
-        ></textarea>
+        <h2>Ask AI</h2>
+        <input type='text' 
+        name="note"
+        id="note"
+        cols="50">
+        </input>
         <button id='ques-search' type="submit">Send</button>
       </form>
       <button onClick={startListening} disabled={isListening}>
