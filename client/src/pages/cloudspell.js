@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navbar } from '../components/navbar'
+import './styles/cloudspell.css'
 
 export default function Cloudspell() {
     function validate(event) {
@@ -13,22 +14,27 @@ export default function Cloudspell() {
             body: JSON.stringify({ para: paradata })
         }).then(response => response.json())
             .then(data => {
-                const resultDiv = document.getElementById('results');
+                const resultDiv = document.getElementById('errors');
                 resultDiv.innerHTML = ' ';
                 const accuracy = document.getElementById('accuracy');
                 accuracy.innerHTML = " ";
     
                 if (Array.isArray(data)) {
-                    let numWord = data.length;
+                    let numWord = paradata.length;
                     let numErr = data.filter(each => each.word).length;
+                    console.log(numErr)
                     let errCode = numWord - numErr;
                     var percentageoferr = (errCode / numWord) * 100;
-    
                     const Accuracy = document.createElement('meter');
+                    const span = document.createElement('span')
                     Accuracy.value = errCode;
                     Accuracy.max = numWord;
                     document.getElementById("accuracy").innerHTML = percentageoferr.toFixed(1) + "% accuracy";
+                    span.innerHTML = "No. of Words = " + numWord  + "&nbsp;&nbsp;&nbsp;No. of Errors = " + numErr;
+
                     accuracy.appendChild(Accuracy);
+                    accuracy.appendChild(span);
+
     
                     const createCounter = () => {
                         let count = 0;
@@ -47,12 +53,12 @@ export default function Cloudspell() {
                             const wordLi = document.createElement('li');
                             const messageLi = document.createElement('li');
                             const sentenceLi = document.createElement('li');
-    
-                            p.textContent = 'error : ' + no;
+                            
+                            p.textContent = 'Error : ' + no;
                             messageLi.textContent = `Message: ${each.message}`;
                             sentenceLi.textContent = `Sentence: ${each.sentence}`;
                             wordLi.textContent = `Word: ${each.word}`;
-    
+                            
                             ul.append(messageLi);
                             ul.append(sentenceLi);
                             ul.append(wordLi);
@@ -77,14 +83,26 @@ export default function Cloudspell() {
   return (
     <div>
         <Navbar/>
-        <h1>Write Essay</h1><br />
-        <textarea id="paragraph" name="para" placeholder="Try it" rows="10" cols="50" spellCheck="true"></textarea>
-        <div id="accur-div">
-            <div id="accuracy"></div>
+            <pre id='cloudspell-head'>Enter your text.</pre><br />
+        <div className="cloudspell-container">
+            <div className="textarea-button">
+                <textarea 
+                id="paragraph" 
+                type='text'
+                name="para" 
+                placeholder="Enter here" 
+                rows="20" 
+                cols="60" 
+                spellCheck="true"></textarea>
+                <button id="verify" onClick={(e) => validate(e)}>Verify</button>
+            </div>
+            <div className="results">
+                <div id="accuracy"></div>
+               
+                <div id="errors"></div>
+            </div>
         </div>
-        <button id="verify" onClick={(e) => validate(e)}>Verify</button>
-        <div id="results"></div>
-        </div>
+    </div>
   );
   
 }

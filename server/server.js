@@ -52,7 +52,6 @@ app.post('/register', async (req, res) => {
 app.post('/filelist',async(req,res)=>{
   try{
     const {userid} = req.body;
-    console.log(userid)
     const filelist = await FileList(userid);
     res.send(filelist);
   }catch(error){
@@ -60,6 +59,7 @@ app.post('/filelist',async(req,res)=>{
     res.send("Error")
   }
 })
+
 
 app.post('/deleteacc',async(req,res)=>{
   try{
@@ -99,7 +99,6 @@ app.post('/grammacheck',async(req,res)=>{
   try{
     const {para} = req.body;
     const grammacheck = await GrammaCheck(para);
-    console.log(grammacheck)
     res.send(grammacheck);
   }catch(error){
     console.log("Error is grammar checking->"+error)
@@ -113,8 +112,8 @@ app.post('/askai',async(req,res)=>{
   try{
     const answer = await AskAi(ques);
     res.send(answer)
-  }catch( error ){
-    console.log("Error in Ai->"+ error )
+  }catch(error){
+    console.log("Error in Ai->"+error)
   }
 })
 

@@ -38,7 +38,7 @@ function LoginPage() {
       <div className="logincontainer">
         <div className="loginForm">
           <p className='Cloudbag-head'>Cloudbag</p>
-          <h3>Login.</h3>
+          <pre id='loginpage-login'>Login.</pre>
           <form onSubmit={handleSubmit}>
             <p>
               
