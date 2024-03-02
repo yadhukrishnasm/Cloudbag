@@ -72,7 +72,7 @@ export default function Askai() {
 
       <div className="container">
         <p className="response">{response}</p>
-        {link && <img src={link} alt="Response Image" width={100}px  />} 
+        {link && <img src={link} alt="Response" width={100}px  />} 
       </div>
     </div>
   );

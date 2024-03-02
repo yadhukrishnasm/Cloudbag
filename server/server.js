@@ -61,9 +61,10 @@ app.post('/filelist',async(req,res)=>{
   }
 })
 
-app.post('viewfile',async(req,res)=>{
+app.post('/viewfile',async(req,res)=>{
   try{
     const {userid,filename} = req.body;
+    console.log(userid + filename);
     const viewfile = await ViewFile(userid,filename);
     res.send(viewfile);
   }catch(error){
