@@ -43,7 +43,7 @@ export default function RegisterPage() {
       <div className="registercontainer">
         <div className="registerForm">
           <p className='Cloudbag-registerhead'>Cloudbag</p>
-          <h3>Register here!!</h3>
+          <pre id='registerpage-register'>Register here!!</pre>
           <form onSubmit={handleSubmit}>
 
             <p>               

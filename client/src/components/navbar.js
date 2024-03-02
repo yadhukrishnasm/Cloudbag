@@ -20,7 +20,7 @@ export const Navbar = ({username})=>{
     <div>
       <div className="nav">
         <div id='left'>
-          <Link to ="/home" id="logo">Cloudbag</Link>
+          <Link to ="/" id="logo">Cloudbag</Link>
         </div>
 
         {shouldDisplay && (

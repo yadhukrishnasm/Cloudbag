@@ -1,0 +1,66 @@
+#results{
+    padding: 10px;
+}
+
+.cloudspell-container{
+    width: 100vw;
+    height: max-content;
+    padding-left: 3rem;
+    display: flex;
+}
+
+#cloudspell-head{
+    font-family: monospace;
+    color: black;
+    margin: 3rem;
+    font-size:x-large;
+    font-weight: 600;
+}
+
+#paragraph{
+    background-color: antiquewhite;
+    font-size: 1.3em;
+    border: solid 1px rgb(102, 4, 102);
+    outline: none;
+    padding: 5px;
+    scroll-behavior:smooth;
+
+}
+
+#accur-div{
+    float: left;
+}
+.textarea-button{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    button{
+        border-radius: 10px;
+        margin-top: 1em;
+        width: 100%;
+        border: solid 1px rgb(102, 4, 102) ;
+        padding: 10px;
+        background-color: rgb(102, 4, 102);
+        color: antiquewhite;
+        font-weight: bold;
+    }
+}
+
+.results{
+    margin-left: 10em;
+    width: 40em;
+}
+p{
+    color: red;
+    font-size: large;
+}
+
+#accuracy{
+    width: 20em;
+}
+meter{
+    block-size: 3em;
+    inline-size: 20em;
+
+}

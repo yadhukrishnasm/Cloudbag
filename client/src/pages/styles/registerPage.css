@@ -76,3 +76,8 @@ button:hover{
     font-size:3em;
     color: rgb(255, 254, 180);
 }
+
+#registerpage-register{
+    color: white;
+    font: 1.5em monospace;
+}
