@@ -1,0 +1,20 @@
+.notebook-container {
+    width: 350px;
+    height: 200px;
+    border: 1px solid #ccc;
+  }
+  
+  .notebook-content {
+    width: 100%;
+    height: 100%;
+    padding: 5px; /* Add padding to make the text more readable */
+    background-color: rgb(255, 255, 255);
+    overflow: auto; /* Add overflow for scrolling if needed */
+  }
+  
+  .notebook-textarea {
+    width: 100%;
+    height: 100%;
+    padding: 5px; /* Add padding to textarea for better appearance */
+  }
+  
