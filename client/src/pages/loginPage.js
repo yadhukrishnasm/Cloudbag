@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Navbar } from '../components/navbar';
 import './styles/loginpage.css';
 
 function LoginPage() {
@@ -17,13 +16,14 @@ function LoginPage() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username: username, password: password })
-    })
+    }) 
     .then(response => response.json())
     .then(userData => {
-      console.log(userData);
+      console.log(userData);  
 
       if (userData.status === 1) {
         navigate(`/main_homepage/${username}`);
+        sessionStorage.setItem("userid",userData.userid);
       } else {
         console.error('Login failed:', userData.message);
       }
@@ -35,7 +35,6 @@ function LoginPage() {
 
   return (
     <div>
-      {/* <Navbar /> */}
       <div className="logincontainer">
         <div className="loginForm">
           <p className='Cloudbag-head'>Cloudbag</p>

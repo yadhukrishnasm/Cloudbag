@@ -1,4 +1,3 @@
-
 .registercontainer{
     height: 100vh;
     width: 100vw;
@@ -69,7 +68,6 @@ button:hover{
     font-weight: bolder;
     a{
         color: #efff62dc;
-
     }
 }
 .Cloudbag-registerhead{

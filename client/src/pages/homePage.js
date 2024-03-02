@@ -5,14 +5,14 @@ import {Navbar} from '../components/navbar'
 import { useParams } from 'react-router-dom';
 import Askai from '../modules/askai';
 import './styles/homepage.css'
-// import Drawer from '../components/drawer';
+import Drawer from '../components/drawer';
 
 const HomePage = () => {
   const { username } = useParams();
   return (
     <div>
       <Navbar username = {username} /> 
-      {/* <Drawer/> */}
+      <Drawer/>
       <div className="viewer">
         pdf viewer
         {/* <iframe src="" width="100%" height="600px"></iframe> */}

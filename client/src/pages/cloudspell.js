@@ -40,8 +40,7 @@ export default function Cloudspell() {
     
                     if (numErr > 0) {
                         data.forEach(each => {
-                            let no = counter();
-    
+                            let no = counter();    
                             const ul = document.createElement('ul');
                             const p = document.createElement('p');
                             const constainer = document.createElement('div');
@@ -73,8 +72,8 @@ export default function Cloudspell() {
                 console.log('Error checking grammar:', error);
             });
     }
-    
 
+    
   return (
     <div>
         <Navbar/>
@@ -87,4 +86,5 @@ export default function Cloudspell() {
         <div id="results"></div>
         </div>
   );
+  
 }

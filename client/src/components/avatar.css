@@ -6,9 +6,30 @@
     overflow: hidden;
     background-image: url("../../public/images.jpg");
     background-size: cover;
+    position: relative;
+    z-index: 2;
 }
 
 #image{
     width: fit-content;
     height: fit-content;
+    
+}
+.dropdown{
+    text-align: right;
+    padding-top: 2em;
+    padding-left: 1em;
+    padding-right: .5rem    ;
+    position: absolute;
+    top: 1em;
+    right: 15px;
+    z-index: 1;
+    background-color: rgb(250, 235, 215);
+    border-radius: 20px;
+    box-shadow: 10px 20px 20px -10px;
+}
+#username{
+    z-index: 3;
+    position: relative;
+    margin-right: 10px;
 }
