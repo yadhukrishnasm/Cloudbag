@@ -12,7 +12,7 @@ export default function RegisterPage() {
     const handleSubmit = (e) => {
           e.preventDefault();
           
-          fetch('http://localhost:3000/register', {
+          fetch('http://localhost:5000/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -45,28 +45,30 @@ export default function RegisterPage() {
           <p className='Cloudbag-registerhead'>Cloudbag</p>
           <h3>Register here!!</h3>
           <form onSubmit={handleSubmit}>
-            <p>
-              
+
+            <p>               
               <input type="text" id="username" placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)} /><br/>
             </p>
-            <p>
 
+            <p>               
               <input type="password" id="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} /> <br />
             </p>
-            <p>
 
+            <p>
               <input type="text" id="email" value={email} placeholder='email' onChange={(e) => setemail(e.target.value)}/> <br />
             </p>
-            <button type="submit"className='registerButton'>Register</button><br />
+
+            <button type="submit"className='registerButton'>Register</button>
+            <br />
           </form>
+
           <p id='toLogin'>
-      
             Already registered?
             <Link to="/"id='toLogin'> Login</Link>
           </p>
+
         </div>
       </div>
     </div>
-
   )
 }

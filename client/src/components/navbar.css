@@ -33,3 +33,7 @@ a{
 .link{
     font-weight:500;
 }
+.link:hover{
+    transition: all step-start .3s;
+    transform: scale(2);
+}

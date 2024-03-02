@@ -30,8 +30,7 @@ export const Navbar = ({username})=>{
                   <Link className ='link' to ="/gramma">Cloudspell</Link>
                 </span>
                 <span id='user'>
-                  <span id='username'>{username}</span>
-                  <Avatar/>  
+                  <Avatar username = {username}/>  
                 </span>
           </div>
           )}
