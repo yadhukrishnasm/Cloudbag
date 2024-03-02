@@ -10,6 +10,7 @@ const DeleteFile = require('./routes/deletefile.js');
 const AskAi = require('./routes/askai.js');
 const Upload = require('./routes/upload.js');
 const DeleteAccount  = require('./routes/deleteaccount.js');
+const ViewFile = require('./routes/viewfile.js');
 const dbConnectionMiddleware = require('./middleware/dbConnection');
 const multer = require('multer')
 
@@ -59,6 +60,18 @@ app.post('/filelist',async(req,res)=>{
     console.log("Error during view file list ->"+error)
     res.send("Error")
   }
+})
+
+app.post('viewfile',async(req,res)=>{
+  try{
+    const {userid,filename} = req.body;
+    const viewfile = await ViewFile(userid,filename);
+    res.send(viewfile);
+  }catch(error){
+    console.log("Error in viewing the file ->"+error)
+    res.send("Error")
+  }
+
 })
 
 app.post('/deleteacc',async(req,res)=>{
