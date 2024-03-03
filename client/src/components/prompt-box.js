@@ -7,6 +7,7 @@ export const PromptBox = (props) => {
   };
 
   return (
+
     <div className="prompt">
       <div className="prompt-box">
         <pre>Do you want to logout</pre>

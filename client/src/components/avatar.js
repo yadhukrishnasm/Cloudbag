@@ -8,43 +8,43 @@ const Avatar=({ username }) => {
   const Navigate = useNavigate()
   const [dropdown,setdropdown] = useState(false);
   const [prompt,setprompt] = useState(false)
-  const [returnData,setReturnData] = useState()
 
   const handleDataReturn = (data)=>{
-  setReturnData(data)
+  if(data === true){
+    sessionStorage.clear();
+    Navigate('/')
+  }
+  else if(data === false){
+    setprompt(false)}
   }
 
   const show =()=>{
       setdropdown(!dropdown)
     }
 
-  const logout = () =>{
-    setprompt(true)
-    console.log('entered logout function');
-    if(returnData){
-      sessionStorage.clear();
-      Navigate('/')
-    }
-    else setprompt(false)
+  const logout =()=>{
+    setprompt(!prompt)
   }
+
+
 
   return (
     <div >
       <span id='username'>{username}</span>
       <button className="avatar" onClick={show}>
       </button>
-      { prompt && ( 
-        <PromptBox onDataReturn={handleDataReturn} type='logout'/>
-      )}
 
       {dropdown && (
         <div className="dropdown">
+            {prompt && ( 
+              <PromptBox onDataReturn={handleDataReturn} type='logout' />
+            )}
             <p id="sign-out" onClick={logout}>
               sign-out
             </p>
-            <p class="dropdown-button" id="delete">
+            {/* <p class="dropdown-button" id="delete" onClick={deleteAcc}> */}
               Delete account
-            </p>
+            {/* </p> */}
           </div>
     )
     }
@@ -52,4 +52,4 @@ const Avatar=({ username }) => {
   )
 }
 
-  export default Avatar;
+export default Avatar
