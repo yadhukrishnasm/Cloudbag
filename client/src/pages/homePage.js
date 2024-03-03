@@ -1,5 +1,4 @@
 import React from 'react';
-import { Notes } from '../modules/notes'
 import Notebook from '../modules/notebook'; // Import the Notebook component
 import {Navbar} from '../components/navbar'
 import { useParams } from 'react-router-dom';
@@ -26,7 +25,6 @@ const HomePage = () => {
           </div>
         </div>
         <div className="notes">
-          <Notes/>
           <h2>Notebook</h2>
           <Notebook /> {/* Include the Notebook component here */}
         </div>

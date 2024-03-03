@@ -42,7 +42,7 @@ const Avatar=({ username }) => {
             <p id="sign-out" onClick={logout}>
               sign-out
             </p>
-            <p id="delete">
+            <p class="dropdown-button" id="delete">
               Delete account
             </p>
           </div>

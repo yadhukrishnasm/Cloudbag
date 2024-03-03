@@ -6,7 +6,7 @@ const Notebook = () => {
   const [text, setText] = useState('');
 
   useEffect(() => {
-    const savedText = localStorage.getItem('notebookText');
+    const savedText = localStorage.getItem(sessionStorage.getItem("userid"));
     if (savedText) {
       setText(savedText);
     }
@@ -18,7 +18,7 @@ const Notebook = () => {
 
   const handleChange = (event) => {
     setText(event.target.value);
-    localStorage.setItem('notebookText', event.target.value);
+    localStorage.setItem(sessionStorage.getItem("userid"), event.target.value);
   };
 
   const handleBlur = () => {
