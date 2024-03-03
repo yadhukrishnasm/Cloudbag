@@ -53,7 +53,7 @@ const Drawer = () => {
         .then(response => {
           if (response.ok) {
             console.log('File deleted successfully');
-            fetchFileList(); // Update file list after deletion
+            fetchFileList();
           } else {
             throw new Error('Failed to delete file');
           }

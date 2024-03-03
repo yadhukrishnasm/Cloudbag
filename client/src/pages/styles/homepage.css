@@ -17,6 +17,8 @@
     top: 10vh;
     overflow: scroll;
     overflow-x:hidden;
+    z-index: -1;
+
 }
 .chat{
     height: fit-content;

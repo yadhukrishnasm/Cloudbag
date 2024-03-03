@@ -33,3 +33,7 @@
     position: relative;
     margin-right: 10px;
 }
+
+#sign-out{
+    cursor: pointer;
+}

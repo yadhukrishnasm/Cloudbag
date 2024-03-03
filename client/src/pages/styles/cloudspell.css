@@ -1,13 +1,14 @@
 #results{
-    padding: 10px;
+    /* padding: 10px; */
+    overflow-y: scroll; 
 }
 
 .cloudspell-container{
     width: 100vw;
-    height: max-content;
-    padding-left: 3rem;
+    height: 100vh;
     display: flex;
-}
+    justify-content: space-evenly;
+}   
 
 #cloudspell-head{
     font-family: monospace;
@@ -48,8 +49,7 @@
 }
 
 .results{
-    margin-left: 10em;
-    width: 40em;
+    width: 30em;
 }
 p{
     color: red;
