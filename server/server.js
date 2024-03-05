@@ -28,7 +28,6 @@ app.post('/login',async(req, res) => {
     const { username, password } = req.body;
     console.log(req.body);
     const response = await Login(username, password);
-    console.log(response)
     res.send(response)
     //res.json({success: userid});
   } catch (error) {
