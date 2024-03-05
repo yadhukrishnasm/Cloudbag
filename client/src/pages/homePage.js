@@ -26,7 +26,7 @@ const HomePage = () => {
         </div>
         <div className="notes">
           <h2>Notebook</h2>
-          <Notebook /> {/* Include the Notebook component here */}
+          <Notebook /> 
         </div>
       </div>
 

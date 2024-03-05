@@ -11,18 +11,20 @@ const Avatar=({ username }) => {
   const [type,setType] = useState('')
 
   const handleDataReturn = (data,key)=>{
-  if(key === 'delete'){
+  if(key === 'Delete'){
     try{
       fetch('http://localhost:5000/deleteacc', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({userid : sessionStorage.getItem('userid')})
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userid : sessionStorage.getItem('userid') }),
       }) 
-      .then( response =>{
-        console.log(`Response from the server ${response}`)
+        .then( data =>{
+          console.log(data)
+          sessionStorage.clear('userid');
+          Navigate('/')  
       })
-      .catch((error)=>{
-        console.log(`error while fetching data from server : ${error}`)
+        .catch((error)=>{
+          console.log(`error while fetching data from server : ${error}`)
       })
 
     }catch(error){
@@ -55,17 +57,17 @@ const Avatar=({ username }) => {
 
       {dropdown && (
         <div className="dropdown">
-            {prompt && ( 
-              <PromptBox onDataReturn={handleDataReturn} content={type}/>
-            )}
+          {prompt && ( 
+            <PromptBox onDataReturn={handleDataReturn} content={type}/>
+          )}
 
-            <p id="sign-out" onClick={() =>showPrompt('Logout')}>
-              sign-out
-            </p>
-            <p id="delete" onClick={() => showPrompt('Delete')}>
-              Delete account
-            </p>
-          </div>
+          <p id="sign-out" onClick={() =>showPrompt('Logout')}>
+            sign-out
+          </p>
+          <p id="delete" onClick={() => showPrompt('Delete')}>
+            Delete account
+          </p>
+        </div>
     )}
     </div>
   )

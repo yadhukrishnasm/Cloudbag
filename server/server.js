@@ -76,6 +76,7 @@ app.post('/viewfile',async(req,res)=>{
 app.post('/deleteacc',async(req,res)=>{
   try{
     const {userid} = req.body;
+    console.log("userid"+req.body)
     const response = await DeleteAccount(userid);
     res.send(response)
   }catch(error){

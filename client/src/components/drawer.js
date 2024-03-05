@@ -71,7 +71,10 @@ const Drawer = () => {
       </div>
       {drawer && (
         <div className="drawer-container">
+          <form >
           <input type="file" />
+          <button type="submit"></button>
+          </form>
           {pdfArray.map((content, index) => (
             <div className="files" key={index}>
               <p>{content}</p>
