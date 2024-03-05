@@ -138,7 +138,7 @@ const storage = multer.diskStorage({
   }
 });
 const upload = multer({ storage: storage })
-app.post('/upload', upload.single('file'),(req, res) => {
+app.post('/upload', upload.single('file'),(req, res) => {x
     const userid = req.body.userid;
     const subname = req.body.subname;
     const filename = req.file.originalname;

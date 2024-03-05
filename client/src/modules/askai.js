@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './styles/askai.css';
 
 export default function Askai() {
   const [response, setResponse] = useState('');
@@ -58,10 +59,10 @@ export default function Askai() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h2>Ask AI</h2>
+        <pre>Ask AI</pre>
         <input type='text' 
         name="note"
-        id="note"
+        id="ques-InputBox"
         cols="50">
         </input>
         <button id='ques-search' type="submit">Send</button>

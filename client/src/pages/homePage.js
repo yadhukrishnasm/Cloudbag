@@ -25,7 +25,6 @@ const HomePage = () => {
           </div>
         </div>
         <div className="notes">
-          <h2>Notebook</h2>
           <Notebook /> 
         </div>
       </div>

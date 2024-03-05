@@ -1,0 +1,14 @@
+.file-drop-box {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .file-drop-box.dragging {
+    border-color: #4caf50;
+    background-color: #f0f8ff; /* LightBlue */
+  }
+  .upload-container{
+    margin: 10px;
+  }

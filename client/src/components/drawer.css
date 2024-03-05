@@ -1,12 +1,68 @@
-.drawer-container{
-    float: left;
+.drawer-container {
     border: solid black 1px;
     position: absolute;
+    width: 18em;
+    height: 100%;
     background-color: wheat;
-    transition: all ease-in-out 1s;
+    transition: transform ease-in-out 0.3s; 
+    transform: translateX(-100%);
+    padding: 10px;
 }
-.drawer-button{
-    border: 1px solid black;
-    width: fit-content;
-    cursor:pointer;
-}
+  .drawer-container.open {
+    transform: translateX(0); 
+  }
+  
+  .drawer-button {
+    width: 1.3em;
+    height: fit-content;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 1.3em;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .drawer-button.change {
+    transform: translateX(20em);
+  }
+  
+  .change #bar1 {
+    transform: rotate(20deg) translateY(2px);
+  }
+  
+  .change #bar2 {
+    transform: rotate(-20deg) translateY(-2px);
+  }
+  
+  #bar1 {
+    transition: all 0.3s ease-in-out;
+    border: none;
+    background-color: #000;
+    height: 15px;
+    width: 3px;
+    transform: rotate(-20deg) translateY(1.2px);
+    border-radius: 5px;
+  }
+  
+  
+  #bar2 {
+    transition: all 0.3s ease-in-out;
+    border: none;
+    transform: translateY(-1.9px) translateX(0.4px) rotate(20deg);
+    background-color: #000;
+    height: 15px;
+    border-radius: 5px;
+    width: 3px;
+  }
+  
+  .upload-drawer-btn{
+    width: 100%;
+    height: 3em;
+    background-color: indigo;
+    color: antiquewhite;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 15px;
+  }

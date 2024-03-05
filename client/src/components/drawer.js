@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import './drawer.css';
+import Upload from "./upload.js"
 
 const Drawer = () => {
   const [drawer, setHideDrawer] = useState(false);
   const [pdfArray, setPdfArray] = useState([]);
   const [selectedFile, setSelectedFile] = useState('');
+  const [upload,setUpload] = useState(false)
 
   useEffect(() => {
     fetchFileList();
-  }, []);
+  }, [setHideDrawer]);
 
   const fetchFileList = () => {
     fetch('http://localhost:5000/filelist', {
@@ -34,9 +36,9 @@ const Drawer = () => {
       });
   };
 
-  const hide = () => {
+  function toggleDrawer() {
     setHideDrawer(!drawer);
-  };
+  }
 
   const handleFileDelete = () => {
     if (selectedFile) {
@@ -64,34 +66,38 @@ const Drawer = () => {
     }
   };
 
+
   return (
     <div>
-      <div className="drawer-button" onClick={hide}>
-        drawer
+      <div className={`drawer-button ${drawer ? 'change' : ''}`} onClick={toggleDrawer}>
+        <div id='bar1'></div>
+        <div id='bar2'></div>
       </div>
-      {drawer && (
-        <div className="drawer-container">
-          <form >
-          <input type="file" />
-          <button type="submit"></button>
-          </form>
-          {pdfArray.map((content, index) => (
-            <div className="files" key={index}>
-              <p>{content}</p>
-              <button
-                className="delete"
-                onClick={() => {
-                  setSelectedFile(content);
-                  handleFileDelete();
-                }}
-              >
-                delete
-              </button>{' '}
-              <button className="view">view</button>
-            </div>
-          ))}
-        </div>
+
+      <div className={`drawer-container ${drawer ? 'open' : ''}`}>
+
+      <button className="upload-drawer-btn" onClick={()=>setUpload(!upload)}> Upload file </button>
+      {upload &&(
+        <Upload/>
       )}
+
+        {pdfArray.map((content, index) => (
+          <div className="files" key={index}>
+            <p>{content}</p>
+            <button
+              className="delete"
+              onClick={() => {
+                setSelectedFile(content);
+                handleFileDelete();
+              }}
+            >
+              delete
+            </button>{' '}
+
+            <button className="view">view</button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

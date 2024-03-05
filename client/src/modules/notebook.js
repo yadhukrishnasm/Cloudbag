@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Notebook.css'; 
+import './styles/Notebook.css'; 
 
 const Notebook = () => {
   const [isEditing, setIsEditing] = useState(false);
