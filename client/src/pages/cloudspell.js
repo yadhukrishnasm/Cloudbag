@@ -20,7 +20,7 @@ export default function Cloudspell() {
                 accuracy.innerHTML = " ";
     
                 if (Array.isArray(data)) {
-                    let numWord = paradata.length;
+                    let numWord = paradata.trim().split(/\s+/).length;
                     let numErr = data.filter(each => each.word).length;
                     console.log(numErr)
                     let errCode = numWord - numErr;
