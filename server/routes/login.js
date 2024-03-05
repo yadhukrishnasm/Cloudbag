@@ -26,7 +26,6 @@ const login = async(username,password) => {
 
         const user = await getUserByUsername(username);
         if(username == user.user && password == user.password){
-           console.log(user);
            return {"userid":user._id,"status":1};
         }
 

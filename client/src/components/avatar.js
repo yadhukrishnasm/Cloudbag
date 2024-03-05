@@ -8,11 +8,31 @@ const Avatar=({ username }) => {
   const Navigate = useNavigate()
   const [dropdown,setdropdown] = useState(false);
   const [prompt,setprompt] = useState(false)
+  const [type,setType] = useState('')
 
-  const handleDataReturn = (data)=>{
-  if(data === true){
-    sessionStorage.clear();
-    Navigate('/')
+  const handleDataReturn = (data,key)=>{
+  if(key === 'delete'){
+    try{
+      fetch('http://localhost:5000/deleteacc', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({userid : sessionStorage.getItem('userid')})
+      }) 
+      .then( response =>{
+        console.log(`Response from the server ${response}`)
+      })
+      .catch((error)=>{
+        console.log(`error while fetching data from server : ${error}`)
+      })
+
+    }catch(error){
+      console.log(`client error while deleting the accout :${error}`)
+    }
+
+  }
+  else if(data === true){
+      sessionStorage.clear('userid');
+      Navigate('/')  
   }
   else if(data === false){
     setprompt(false)}
@@ -22,11 +42,10 @@ const Avatar=({ username }) => {
       setdropdown(!dropdown)
     }
 
-  const logout =()=>{
+  const showPrompt =(message)=>{  
     setprompt(!prompt)
+    setType(message)
   }
-
-
 
   return (
     <div >
@@ -37,17 +56,17 @@ const Avatar=({ username }) => {
       {dropdown && (
         <div className="dropdown">
             {prompt && ( 
-              <PromptBox onDataReturn={handleDataReturn} type='logout' />
+              <PromptBox onDataReturn={handleDataReturn} content={type}/>
             )}
-            <p id="sign-out" onClick={logout}>
+
+            <p id="sign-out" onClick={() =>showPrompt('Logout')}>
               sign-out
             </p>
-            {/* <p class="dropdown-button" id="delete" onClick={deleteAcc}> */}
+            <p id="delete" onClick={() => showPrompt('Delete')}>
               Delete account
-            {/* </p> */}
+            </p>
           </div>
-    )
-    }
+    )}
     </div>
   )
 }
