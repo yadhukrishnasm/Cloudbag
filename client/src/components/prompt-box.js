@@ -4,7 +4,9 @@ import './styles/promptBox.css';
 export const PromptBox = (props) => {
   let key = props.content;
   const handleClick = (value) => {
+    
     props.onDataReturn(value,key);
+
   };
 
   return (
