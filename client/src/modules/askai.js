@@ -63,7 +63,7 @@ export default function Askai() {
         <input type='text' 
         name="note"
         id="ques-InputBox"
-        cols="50">
+        cols="20">
         </input>
         <button id='ques-search' type="submit">Send</button>
       </form>
