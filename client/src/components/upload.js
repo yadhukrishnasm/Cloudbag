@@ -22,37 +22,38 @@ export default function Upload() {
     const handleDrop = (e) => {
         e.preventDefault();
         setIsDragging(false);
-        setFile(Array.from(e.dataTransfer.files));
+        setFile(Array.from(e.target.files));
     };
     const handleFileSelect = (e) => {
-        setFile(Array.from(e.dataTransfer.files));
+        console.log(e.target.files) 
+        setFile(Array.from(e.target.files));
       };
     const upload = async () => {
-        if (!file) {
-          console.log('No file selected');
-          return;
+      if (!file) {
+        console.log('No file selected');
+        return;
+      }
+      
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('userid', sessionStorage.getItem('userid'));
+      formData.append('subname', subname);
+  
+      try {
+        const response = await fetch('http://localhost:5000/upload', {
+          method: 'POST',
+          body: formData,
+        });
+  
+        if (response.ok) {
+          console.log('File uploaded successfully');
+        } else {
+          console.error('Failed to upload file');
         }
-    
-        const formData = new FormData();
-        formData.append('file', file);
-        formData.append('userid', sessionStorage.getItem('userid'));
-        formData.append('subname', subname);
-    
-        try {
-          const response = await fetch('http://localhost:5000/upload', {
-            method: 'POST',
-            body: formData,
-          });
-    
-          if (response.ok) {
-            console.log('File uploaded successfully');
-          } else {
-            console.error('Failed to upload file');
-          }
-        } catch (error) {
-          console.error('Error during file upload:', error);
-        }
-      };
+      } catch (error) {
+        console.error('Error during file upload:', error);
+      }
+    };
     
   return (
 
@@ -74,7 +75,6 @@ export default function Upload() {
           style={{ display: 'none' }}
         />
       </div>
-
 
         <br />
         <label htmlFor="cars" id='select-label'>Choose subject :</label>
