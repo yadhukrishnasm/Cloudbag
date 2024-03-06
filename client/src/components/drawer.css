@@ -4,7 +4,7 @@
     width: 18em;
     height: 100%;
     background-color: wheat;
-    transition: transform ease-in-out 0.3s; 
+    transition: transform ease-in-out 0.2s; 
     transform: translateX(-100%);
     padding: 10px;
 }
@@ -21,7 +21,7 @@
     position: absolute;
     top: 50%;
     left: 1.3em;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
   }
   
   .drawer-button.change {

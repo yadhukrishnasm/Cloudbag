@@ -1,4 +1,62 @@
 #ques-InputBox{
-    width: 100%;
-    
+    width: 60%;
+    height: 3em;
+    border-radius: 5px;
+    background-color: wheat;
+    border:solid 1px purple;
+    outline: none;
+    color: purple;
+    font-family: monospace;
+    padding: 0px;
+    font-size: large;
+    text-wrap:balance;
+}
+
+.search-form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#ques-search{
+    width: 40px;
+    height: 40px;        
+    border: 1px solid rgb(92, 5, 96);
+    background-color: rgba(245, 222, 179, 0);
+    color: indigo;
+    border-radius: 50px;
+    margin: 5px;
+    background-image: url(../../assets/icons8-search.svg);
+    padding: 0px;
+    background-size:30px ;
+    background-repeat: no-repeat;
+    background-position: 4px 4px;
+}
+#ques-mic{
+    width: 3em;
+    height: 3em;
+    padding: 0px;
+    border: 1px solid rgb(92, 5, 96);
+    background-color: wheat;
+    color: indigo;
+    border-radius: 50px;
+    background-image: url(https://img.icons8.com/ios/50/microphone.png);
+    background-size:30px ;
+    background-color: rgba(245, 245, 220, 0);
+    background-repeat: no-repeat;
+    background-position: 4px 4px;
+}
+.container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.response{
+    color: black;
+    border: 1px solid indigo;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0px 1px 5px 1px;
+    transition: ease-in-out 1s box-shadow;
 }

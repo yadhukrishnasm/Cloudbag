@@ -55,24 +55,25 @@ export default function Upload() {
       };
     
   return (
+
     <div className='upload-container'>
-        <div
+      <div
       className={`file-drop-box ${isDragging ? 'dragging' : ''}`}
       onDragEnter={handleDragEnter}
       onDragLeave={handleDragLeave}
       onDragOver={handleDragOver}
       onDrop={handleDrop}
-    >
-      <pre>Drag and drop files here</pre>
-      <label htmlFor="fileInput">or choose files</label>
-      <input
-        type="file"
-        id="fileInput"
-        multiple
-        onChange={handleFileSelect}
-        style={{ display: 'none' }}
-      />
-    </div>
+      >
+        <pre>Drag and drop files here</pre>
+        <label htmlFor="fileInput">or choose files</label>
+        <input
+          type="file"
+          id="fileInput"
+          multiple
+          onChange={handleFileSelect}
+          style={{ display: 'none' }}
+        />
+      </div>
 
 
         <br />

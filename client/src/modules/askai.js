@@ -52,28 +52,27 @@ export default function Askai() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const question = document.getElementById('note').value;
+    const question = document.getElementById('ques-InputBox').value;
     sendQuestion(question);
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
         <pre>Ask AI</pre>
+      <form onSubmit={handleSubmit} className='search-form'>
         <input type='text' 
         name="note"
-        id="ques-InputBox"
-        cols="50">
+        id="ques-InputBox">
         </input>
-        <button id='ques-search' type="submit">Send</button>
+        <button id='ques-search' type="submit"></button>
+        
+        <button onClick={startListening} disabled={isListening} id='ques-mic'>
+        </button>
       </form>
-      <button onClick={startListening} disabled={isListening}>
-        Start Audio Search
-      </button>
 
       <div className="container">
-        <p className="response">{response}</p>
-        {link && <img src={link} alt="Response" width={100}px  />} 
+        {link && <img src={link} alt="Response" width={200}px  />} 
+        <p className={response ? "response": ""}>{response}</p>
       </div>
     </div>
   );
