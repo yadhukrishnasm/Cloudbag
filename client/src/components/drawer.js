@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import './drawer.css';
 import Upload from "./upload.js"
+import {Viewer} from './viewer.js'
 
 const Drawer = () => {
   const [drawer, setHideDrawer] = useState(false);
   const [pdfArray, setPdfArray] = useState([]);
   const [selectedFile, setSelectedFile] = useState('');
   const [upload,setUpload] = useState(false)
+  const [resUsername,setresUsername] = useState('')
+  const [popup,setpopup] = useState(false)
 
   useEffect(() => {
     fetchFileList();
@@ -38,6 +41,31 @@ const Drawer = () => {
 
   function toggleDrawer() {
     setHideDrawer(!drawer);
+  }
+
+  const handleFileShare=() =>{
+    setpopup(!popup)
+    if(selectedFile){
+      fetch('http://localhost:500/sharedata',{
+        method: 'POST',
+        headers: {
+          'Conent-Type' : 'application/json',
+        },
+        body: JSON.stringify({
+          userid:sessionStorage.getItem('userid'),
+          filename: selectedFile,
+          resUsername: resUsername,
+        })    
+      })
+      .then(response=>{
+        if(response.ok){
+          console.log("send successfully" + response)
+        }
+      })
+      .catch(error=>{
+        console.log(`data sharing error :${error}`)
+      })
+    }
   }
 
   const handleFileDelete = () => {
@@ -94,7 +122,20 @@ const Drawer = () => {
               delete
             </button>{' '}
 
-            <button className="view">view</button>
+            <button className="view" >view</button>
+            <button className='share' onClick={()=>{
+              setSelectedFile(content);
+              handleFileShare();
+            }}>share</button>
+            {popup && (
+              <div className="recipient">
+                <label htmlFor="recipient">who do you want to send</label>      
+                <input type="text" name='recipient' value={resUsername}  onChange={(e)=>{setresUsername(e.target.value)}} placeholder='Enter name'  />
+                <button type="submit" id='button' onClick={()=>{
+                  setpopup(!popup)
+                }}>send</button>
+              </div>
+            )}
           </div>
         ))}
       </div>

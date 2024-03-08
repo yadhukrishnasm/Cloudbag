@@ -22,12 +22,16 @@ export default function Upload() {
     const handleDrop = (e) => {
         e.preventDefault();
         setIsDragging(false);
-        setFile(Array.from(e.target.files));
+        const selectedFile = e.target.files[0];
+        setFile(selectedFile);
     };
+
     const handleFileSelect = (e) => {
         console.log(e.target.files) 
-        setFile(Array.from(e.target.files));
-      };
+        const selectedFile = e.target.files[0];
+        setFile(selectedFile);
+    };
+
     const upload = async () => {
       if (!file) {
         console.log('No file selected');
@@ -35,6 +39,7 @@ export default function Upload() {
       }
       
       const formData = new FormData();
+      console.log(file)
       formData.append('file', file);
       formData.append('userid', sessionStorage.getItem('userid'));
       formData.append('subname', subname);
@@ -83,10 +88,10 @@ export default function Upload() {
         name="cars"
         onChange={(e) => setSubname(e.target.value)}>
 
-        <option value="volvo">Math</option>
-        <option value="saab">English</option>
-        <option value="mercedes">Biology</option>
-        <option value="audi">Computer Science</option>
+        <option value="math">Math</option>
+        <option value="english">English</option>
+        <option value="biology">Biology</option>
+        <option value="computerScience">Computer Science</option>
         </select>
 
         <button onClick={upload}>Upload</button>

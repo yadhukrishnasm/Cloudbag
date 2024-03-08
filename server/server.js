@@ -22,6 +22,8 @@ const PORT = 5000;
 app.use(cors());
 app.use(bodyParser.json());
 dbConnectionMiddleware()
+app.use(express.urlencoded({ extended: true }));
+
 
 app.post('/login',async(req, res) => {
   try {
@@ -98,9 +100,10 @@ app.post('/sharedata',async(req,res)=>{
 
 app.post('/deletefile',async(req,res)=>{
   const {userid,filename} = req.body;
+  console.log(req.body);
   try{
     const deletefile = await DeleteFile(userid,filename);
-    console.log(deletefile)
+
     res.send(deletefile)
   }catch(error){
     console.log("Error in deleting file->"+error)
@@ -137,14 +140,16 @@ const storage = multer.diskStorage({
       cb(null, file.originalname) // Keep the original file name
   }
 });
+
 const upload = multer({ storage: storage })
 app.post('/upload', upload.single('file'),(req, res) => {
+    console.log(req.body)
     const userid = req.body.userid;
     const subname = req.body.subname;
-    const filename = req.file.originalname;
-    const uploadsres = Upload(userid,subname,filename);
+    //const filename = req.file.originalname;
+    //const uploadsres = Upload(userid,subname,filename);
 
-    res.send('File uploaded successfully:'+uploadsres);
+    //res.send('File uploaded successfully:'+uploadsres);
 });
 
 app.listen(PORT, () => {
