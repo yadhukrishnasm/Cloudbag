@@ -46,7 +46,7 @@ const Drawer = () => {
   const handleFileShare=() =>{
     setpopup(!popup)
     if(selectedFile){
-      fetch('http://localhost:500/sharedata',{
+      fetch('http://localhost:5000/sharedata',{
         method: 'POST',
         headers: {
           'Conent-Type' : 'application/json',
@@ -104,29 +104,27 @@ const Drawer = () => {
 
       <div className={`drawer-container ${drawer ? 'open' : ''}`}>
 
-      <button className="upload-drawer-btn" onClick={()=>setUpload(!upload)}> Upload file </button>
-      {upload &&(
-        <Upload/>
-      )}
-
+        <button className="upload-drawer-btn" onClick={()=>setUpload(!upload)}> Upload file </button>
+        {upload &&(
+          <Upload/>
+        )}
+        <hr width="100%" size="2" color='black' />
         {pdfArray.map((content, index) => (
           <div className="files" key={index}>
-            <p>{content}</p>
-            <button
-              className="delete"
-              onClick={() => {
-                setSelectedFile(content);
-                handleFileDelete();
-              }}
-            >
-              delete
-            </button>{' '}
+            <a className='filename' href=''>{content}</a>
+            <br />
+            <div className="buttons-container">
+              <button className="buttons delete" onClick={() => {
+                  setSelectedFile(content);
+                  handleFileDelete();
+                }}> </button>{' '}
 
-            <button className="view" >view</button>
-            <button className='share' onClick={()=>{
-              setSelectedFile(content);
-              handleFileShare();
-            }}>share</button>
+              <button className=' buttons share' onClick={()=>{
+                setSelectedFile(content);
+                handleFileShare();
+              }}></button>
+            </div>
+            <hr width="90%" size="1" color='black' />
             {popup && (
               <div className="recipient">
                 <label htmlFor="recipient">who do you want to send</label>      
