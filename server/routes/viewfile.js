@@ -4,7 +4,7 @@ const ViewFile = async (userId, filename) => {
     return new Promise((resolve, reject) => {
         try {
             const filePath = `./UserData/${userId}/${filename}`;
-            fs.readFile(filePath, 'utf8', (err, data) => {
+            fs.readFile(filePath, (err, data) => {
                 if (err) {
                     console.error('Error reading file:', err);
                     reject('Internal Server Error');
@@ -24,8 +24,8 @@ const ViewFile = async (userId, filename) => {
                 } else {
                     contentType = 'application/octet-stream'; // default to binary data
                 }
-
-                resolve({ contenttype : contentType, content: data });
+                const base64Data = Buffer.from(data).toString('base64');
+                resolve({ contenttype : contentType, content: base64Data });
             });
         } catch (err) {
             console.log("Error in viewing file ->", err);
