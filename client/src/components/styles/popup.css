@@ -1,8 +1,16 @@
 .popupContainer{
-    padding: 20px;
-    box-shadow: 4px 4px 5px 10px ;
+    padding: 10px;
+    box-shadow:-1px 5px 15px 9px rgb(128, 117, 97);
     border-radius: 40px;
-    color:  #750080;
-    background-color: #F9F0DF;
+    border:none;
+    color:  #F9F0DF;
+    background-color: #750080;
+    position: absolute;
+    right: 45%;
+    transition: ease-in-out;
+    top: 20px;
+    pre{
+        font-size:large;
+        font: bold;
+    }
 }
-

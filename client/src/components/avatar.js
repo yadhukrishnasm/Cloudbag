@@ -57,7 +57,7 @@ const Avatar=({ username }) => {
 
       {dropdown && (
         <div className="dropdown">
-          {prompt && ( 
+          {prompt && (
             <PromptBox onDataReturn={handleDataReturn} content={type}/>
           )}
 

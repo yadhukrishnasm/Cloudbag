@@ -1,10 +1,12 @@
 import {React,useState} from 'react'
-export default function popup(props) {
+import './styles/popup.css'
+
+export default function popup({msg}) {
     // const [msg,setMsg] = useState('');
     
   return (
     <div className='popupContainer'>
-        <pre>{props.msg}</pre>
+        <pre>{msg}</pre>
     </div>
   )
 }
