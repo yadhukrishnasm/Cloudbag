@@ -75,7 +75,7 @@ const Drawer = () => {
         .then(response => {
           if (response.ok) {
             console.log(response);
-            handlePopup('File successfully shared');
+            handlePopup('File successfully shared to '+resUsername);
           } else {
             throw new Error('Failed to share file');
           }
