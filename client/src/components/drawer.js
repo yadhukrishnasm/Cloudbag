@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './drawer.css';
 import Upload from "./upload.js"
-<<<<<<< HEAD
 //import {Viewer} from './viewer.js';
-=======
-import Popup from './popup.js';
->>>>>>> d7f7ed5d1de5bc30dce7df7bbfded92fa77965cb
 
 const Drawer = () => {
   const [drawer, setHideDrawer] = useState(false);
