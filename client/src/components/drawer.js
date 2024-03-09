@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './drawer.css';
 import Upload from "./upload.js"
-import {Viewer} from './viewer.js'
+//import {Viewer} from './viewer.js';
 
 const Drawer = () => {
   const [drawer, setHideDrawer] = useState(false);

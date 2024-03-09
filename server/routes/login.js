@@ -1,5 +1,4 @@
 const User = require('../models/user');
-const bcrypt = require('bcrypt');
 
 
 
@@ -39,15 +38,6 @@ const login = async(username,password) => {
           return "Username and Password Dont match"
         }
         
-        // const validPassword = await bcrypt.compare(password, user.passwordHash);
-    
-        // if (!validPassword) {
-        //   return res.status(401).json({ message: 'Invalid username or password' });
-        // }
-    
-        // const token = generateToken(); // Implement this function to generate a token securely
-    
-        // res.json({ token, user: { username: user.username, /* include only necessary user data */ } });
     } catch (error) {
         console.error('Error during login:', error);
         throw new Error('Login failed'); 

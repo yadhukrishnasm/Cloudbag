@@ -19,7 +19,21 @@ const ImageViewer = (props) => {
             console.log(response)
             settype(response.contenttype)
             setImageSrc(response.content)
-        }   
+        }
+        const contentspace = document.getElementById('content');
+        if(type === 'image/jpeg' || type === 'image/png'){
+          contentspace.innerHTML = `<img src="data:image/png;base64,${imageSrc}" width="100%" height="600px">`;
+        }
+        else if(type === 'application/pdf'){
+          contentspace.innerHTML = `<object data="data:application/pdf;base64,${imageSrc}" width="100%" height="600px">`;
+        }
+        else if(type === 'text/plain'){
+          contentspace.innerHTML = `<object data="data:text/plain;base64,${imageSrc}" width="100%" height="600px">`;
+        }
+        else{
+          contentspace.textContent = imageSrc;
+        }
+
     })
     .catch(error =>{
         console.log(error)
@@ -28,10 +42,7 @@ const ImageViewer = (props) => {
   }, []);
 
   return (
-    <div>
-      <h1>Image Viewer</h1>
-      {/* {type ==='img' ? ( <img src={imageSrc} alt="PNG Image" />) : ( <iframe src={pdfSrc} width="100%" height="600px" title="PDF Viewer" /> )}
-      {imageSrc && <img src={imageSrc} alt="PNG Image" />} */}
+    <div id="content">
     </div>
   );
 };

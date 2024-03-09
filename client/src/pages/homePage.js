@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import Askai from '../modules/askai';
 import './styles/homepage.css'
 import Drawer from '../components/drawer';
+import Viewer from '../components/viewer'
 
 const HomePage = () => {
   const [sidebarWidth, setSidebarWidth] = useState(200); // Initial width of the sidebar
@@ -19,6 +20,7 @@ const HomePage = () => {
       <Drawer/>
       <div className="viewer">
         pdf viewer
+        <Viewer/>
         {/* <iframe src="" width="100%" height="600px"></iframe> */}
       </div>
 
