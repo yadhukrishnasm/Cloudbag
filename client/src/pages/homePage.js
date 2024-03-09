@@ -1,4 +1,4 @@
-import React from 'react';
+import {React,useState} from 'react';
 import Notebook from '../modules/notebook'; // Import the Notebook component
 import {Navbar} from '../components/navbar'
 import { useParams } from 'react-router-dom';
@@ -7,6 +7,11 @@ import './styles/homepage.css'
 import Drawer from '../components/drawer';
 
 const HomePage = () => {
+  const [sidebarWidth, setSidebarWidth] = useState(200); // Initial width of the sidebar
+
+  const handleResize = (newWidth) => {
+    setSidebarWidth(newWidth);
+  }
   const { username } = useParams();
   return (
     <div>
@@ -18,12 +23,13 @@ const HomePage = () => {
       </div>
 
 
-      <div className="sidebar">
+      <div className="sidebar" style={{ width: sidebarWidth }}>
+      <div className="resize-handle" onMouseDown={() => handleResize(sidebarWidth + 10)}></div>
         <div className="chat">
           <div id='chatbot'>
             <Askai />
           </div>
-        </div>
+        </div>  
         <div className="notes">
           <Notebook /> 
         </div>

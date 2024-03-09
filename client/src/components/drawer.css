@@ -1,13 +1,14 @@
-.drawer-container {
-    border: solid black 1px;
+  .drawer-container {
+    border: solid #750080 1px;
     position: absolute;
     width: 18em;
-    height: 100%;
-    background-color: wheat;
+    height: 85vh;
+    background-color: #F9F0DF;
     transition: transform ease-in-out 0.2s; 
     transform: translateX(-100%);
-    padding: 10px;
+    padding: 16px;  
 }
+
   .drawer-container.open {
     transform: translateX(0); 
   }
@@ -39,9 +40,9 @@
   #bar1 {
     transition: all 0.3s ease-in-out;
     border: none;
-    background-color: #000;
+    background-color: #750080;
     height: 15px;
-    width: 3px;
+    width: 4px;
     transform: rotate(-20deg) translateY(1.2px);
     border-radius: 5px;
   }
@@ -51,18 +52,57 @@
     transition: all 0.3s ease-in-out;
     border: none;
     transform: translateY(-1.9px) translateX(0.4px) rotate(20deg);
-    background-color: #000;
+    background-color: #750080;
     height: 15px;
     border-radius: 5px;
-    width: 3px;
+    width: 4px;
   }
   
   .upload-drawer-btn{
     width: 100%;
-    height: 3em;
-    background-color: indigo;
-    color: antiquewhite;
+    height: 2.5em;
+    background-color: #750080;
+    color: #F9F0DF;
     font-size: large;
     font-weight: bold;
     border-radius: 15px;
+    outline: none;
+  }
+  .upload-drawer-btn:hover{
+    transition: all ease-in-out .3s;
+    background-color: #750080 ;
+  }
+
+  .buttons{
+    background-color: #F9F0DF;
+    outline: none;
+    width: 2em;
+    height: 2em;
+    border: none;
+  }
+
+  .buttons.share{
+    background-size: contain;
+    background-image: url('https://img.icons8.com/ios-filled/50/1A1A1A/forward-arrow.png');
+  }
+
+  .buttons.delete{
+    background-size: contain;
+    background-image: url('https://img.icons8.com/ios-glyphs/30/FA5252/filled-trash.png');
+    margin-right: 10px;
+    
+  }
+
+  .buttons:hover{
+    transform: scale(1.2);
+  }
+
+  .filename{
+    font-size: large;
+    font-family: monospace;
+    text-wrap: nowrap;
+  }
+
+  .buttons-container{
+    margin: 10px 0px;
   }

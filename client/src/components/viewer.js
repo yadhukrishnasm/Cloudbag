@@ -6,7 +6,7 @@ const ImageViewer = (props) => {
     
 
   useEffect(() => {
-    // Fetch the PNG file from the server
+
     fetch('https://localhost:5000/viewfile', {
         method: 'POST',
         body:JSON.stringify({

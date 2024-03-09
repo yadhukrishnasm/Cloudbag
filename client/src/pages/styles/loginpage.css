@@ -13,18 +13,19 @@
 
 }
 .loginForm{ 
-    border-right: 3px solid rgb(124, 7, 142);
+    border-right: 3px solid #750080;
     padding: 0em 2em;
     display: flex;
+    line-height: 2px;
     justify-content: center;
     flex-direction: column;
     align-items: flex-start;
     width: fit-content;
     height: 100%;
-    background-color: rgba(124, 7, 142, 0.651);
+    background-color: #750080;
     form{
         display: flex;
-        gap: 8px;
+        gap: 4px;
         flex-direction: column;
         input{
             height: 2.5em;
@@ -59,8 +60,8 @@
     border-style: hidden;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
     font-weight: bolder;
-    background-color:rgb(255, 254, 180) ;
-    color:rgb(124, 7, 142) ;
+    background-color:#F9F0DF;
+    color:#750080 ;
 }
 button:hover{
     transform: scale(1.01);
@@ -68,7 +69,7 @@ button:hover{
 }
 
 #toRegister{
-    color: #ffffff;
+    color: #F9F0DF;
     font-size: 1.2em;
     font-weight: bolder;
     a{
@@ -80,11 +81,11 @@ button:hover{
     align-self: center;
     font-weight: bolder ;
     font-size:3em;
-    color: rgb(255, 254, 180);
+    color: #F9F0DF;
     transform: translateY(-20px);
 }
 #loginpage-login{
-    color: white;
+    color: #F9F0DF;
     font: 1.5em monospace;
 
 }

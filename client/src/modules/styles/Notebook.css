@@ -13,7 +13,7 @@
   }
   
   .notebook-textarea {
-    width: 100%;
+    width: 90%;
     height: 100%;
     padding: 5px; /* Add padding to textarea for better appearance */
   }

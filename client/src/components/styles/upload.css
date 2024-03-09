@@ -1,5 +1,5 @@
 .file-drop-box {
-  border: 2px dashed #ccc;
+  border: 2px dashed #F9F0DF;
   padding: 20px;
   text-align: center;
   cursor: pointer;
@@ -7,8 +7,8 @@
 
 .file-drop-box.dragging {
   transition: all ease-in-out linear 1s;
-  border-color: #4caf50;
-  background-color: #f0f8ff; /* LightBlue */
+  border-color: #750080;
+  background-color: #F9F0DF; /* LightBlue */
 }
 .upload-container{
   margin: 10px;

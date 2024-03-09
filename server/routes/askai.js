@@ -53,11 +53,11 @@ const AskAi = async (ques) => {
         }
       } else {
         return gemini(ques);
-        return { answer: 'S1 No information' };
+        // return { answer: 'S1 No information' };
       }
     } catch (error) {
       return gemini(ques);
-      return { answer: 'S2 No information' };
+      // return { answer: 'S2 No information' };
       
     }
   }

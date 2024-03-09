@@ -61,10 +61,10 @@ const Avatar=({ username }) => {
             <PromptBox onDataReturn={handleDataReturn} content={type}/>
           )}
 
-          <p id="sign-out" onClick={() =>showPrompt('Logout')}>
+          <p className = 'dropdown-buttons' id="sign-out" onClick={() =>showPrompt('Logout')}>
             sign-out
           </p>
-          <p id="delete" onClick={() => showPrompt('Delete')}>
+          <p id="delete" className = 'dropdown-buttons' onClick={() => showPrompt('Delete')}>
             Delete account
           </p>
         </div>

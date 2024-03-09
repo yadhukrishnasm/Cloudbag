@@ -2,8 +2,9 @@
     display:flex;
     justify-content: space-between;
     padding: 15px;
-    border-bottom:#750080 solid ;
+    border-bottom: #750080 solid 1px;
 }
+
 #right{
     display: flex;
     gap: 5vw;
@@ -16,6 +17,12 @@
     font-weight: 700;
     color:#750080;
 }
+#logo:hover{
+    transition: all .2s ease-in-out;
+    border-radius:5px;
+    opacity: .6;
+}
+
 a{
     text-decoration: none;
 }
@@ -31,9 +38,15 @@ a{
     align-items: flex-end;
 }
 .link{
+    padding: 2px 5px;
+    border: #750080 solid 1px;
+    border-radius: 5px;
     font-weight:500;
+    display: flex;
+    font-size: 15px;
 }
 .link:hover{
-    transition: all step-start .3s;
-    transform: scale(2);
+    transition: all .5s ease-in-out;
+    background-color: #750080;
+    color: #F9F0DF;
 }

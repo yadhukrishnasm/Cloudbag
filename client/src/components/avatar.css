@@ -8,6 +8,10 @@
     background-size: cover;
     position: relative;
     z-index: 2;
+
+}
+.avatar:hover{
+    transform: scale(1.2)
 }
 
 #image{
@@ -24,16 +28,19 @@
     top: 1em;
     right: 15px;
     z-index: 1;
-    background-color: rgb(250, 235, 215);
+    background-color: #F9F0DF;
     border-radius: 20px;
+    width: 10em;
     box-shadow: 10px 20px 20px -10px;
+    gap: 2em;
 }
 #username{
     z-index: 3;
     position: relative;
     margin-right: 10px;
+    font-size: large;
 }
 
-#sign-out{
+.dropdown-buttons{
     cursor: pointer;
 }

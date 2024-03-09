@@ -46,20 +46,21 @@ const Drawer = () => {
   const handleFileShare=() =>{
     setpopup(!popup)
     if(selectedFile){
+      console.log(sessionStorage.getItem('userid'), selectedFile, resUsername)
       fetch('http://localhost:5000/sharedata',{
         method: 'POST',
         headers: {
-          'Conent-Type' : 'application/json',
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          userid:sessionStorage.getItem('userid'),
+          userid: sessionStorage.getItem('userid'),
           filename: selectedFile,
           resUsername: resUsername,
-        })    
+        }),   
       })
       .then(response=>{
         if(response.ok){
-          console.log("send successfully" + response)
+          console.log(response)
         }
       })
       .catch(error=>{
@@ -121,7 +122,7 @@ const Drawer = () => {
 
               <button className=' buttons share' onClick={()=>{
                 setSelectedFile(content);
-                handleFileShare();
+                setpopup(!popup)
               }}></button>
             </div>
             <hr width="90%" size="1" color='black' />
@@ -130,6 +131,7 @@ const Drawer = () => {
                 <label htmlFor="recipient">who do you want to send</label>      
                 <input type="text" name='recipient' value={resUsername}  onChange={(e)=>{setresUsername(e.target.value)}} placeholder='Enter name'  />
                 <button type="submit" id='button' onClick={()=>{
+                  handleFileShare();
                   setpopup(!popup)
                 }}>send</button>
               </div>

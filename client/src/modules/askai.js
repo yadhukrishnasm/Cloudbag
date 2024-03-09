@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 import './styles/askai.css';
 
-export default function Askai() {
+const Askai = () => {
   const [response, setResponse] = useState('');
   const [link, setLink] = useState('');
   const [isListening, setIsListening] = useState(false);
 
   const startListening = () => {
-    if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (SpeechRecognition) {
       setIsListening(true);
-      const recognition =
-        new window.SpeechRecognition() || new window.webkitSpeechRecognition(); // Use the available constructor
+      const recognition = new SpeechRecognition();
       recognition.lang = 'en-US';
 
       recognition.onresult = (event) => {
         const result = event.results[0][0].transcript;
-        document.getElementById('note').value = result;
+        document.getElementById('ques-InputBox').value = result;
         sendQuestion(result);
         recognition.stop();
         setIsListening(false);
@@ -37,7 +38,7 @@ export default function Askai() {
     fetch('http://localhost:5000/askai', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ques: question })
+      body: JSON.stringify({ ques: question }),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -58,28 +59,20 @@ export default function Askai() {
 
   return (
     <div>
-        <pre>Ask AI</pre>
+      <pre>Ask AI</pre>
       <form onSubmit={handleSubmit} className='search-form'>
-        <input type='text' 
-        name="note"
-        id="ques-InputBox">
-        </input>
-        <button id='ques-search' type="submit"></button>
-        
-        <button onClick={startListening} disabled={isListening} id='ques-mic'>
-        </button>
+        <input type='text' name="note" id='ques-InputBox' />
+        <button type="submit" id='ques-search'></button>
+        <button onClick={startListening} disabled={isListening} id='ques-mic'></button>
       </form>
 
       <div className="container">
-        {link && <img src={link} alt="Response" width={200}px  />} 
-        <p className={response ? "response": ""}>{response}</p>
+        {link && <img src={link} alt="Response" width={200} />} 
+        <p className={response ? "response" : ""}>{response}</p>
       </div>
     </div>
   );
-}
+};
 
-
-
-
-
+export default Askai;
 

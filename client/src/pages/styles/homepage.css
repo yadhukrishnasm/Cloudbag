@@ -6,8 +6,9 @@
 }
 
 .sidebar{
-    border-left:#750080 solid 0.5px;
-    width: 29vw;
+    background-color: #75008071;
+    border-left:#750080 solid 3px;
+    transition:0.5s;
     height: 100%;
     float: right;
     display: flex;
@@ -26,3 +27,13 @@
     height: fit-content;
     border-bottom: 1px solid #750080;
 }
+
+.resize-handle {
+    width: 10px;
+    height: 100%;
+    background-color: #555;
+    cursor: ew-resize;
+    position: absolute;
+    top: 0;
+    left: -5px;
+  }

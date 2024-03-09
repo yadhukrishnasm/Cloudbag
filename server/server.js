@@ -90,6 +90,7 @@ app.post('/deleteacc',async(req,res)=>{
 app.post('/sharedata',async(req,res)=>{
   try{
     const {userid,filename,resUsername} = req.body;
+
     const shareddata = await ShareData(userid,filename,resUsername);
     res.send(shareddata);
   }catch(error){
