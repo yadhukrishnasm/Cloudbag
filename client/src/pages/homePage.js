@@ -8,7 +8,7 @@ import Drawer from '../components/drawer';
 import Viewer from '../components/viewer'
 
 const HomePage = () => {
-  const [sidebarWidth, setSidebarWidth] = useState(200); // Initial width of the sidebar
+  const [sidebarWidth, setSidebarWidth] = useState(400); // Initial width of the sidebar
 
   const handleResize = (newWidth) => {
     setSidebarWidth(newWidth);
