@@ -9,10 +9,10 @@ const ShareData = async (userId, filename, resUsername) => {
         await fs.copyFile(path + userId + "/" + filename, path + resid._id + "/" + filename);
         
         console.log('File shared successfully.');
-        return `File shared successfully to ${resUsername}.`;
+        return {status: `File shared successfully to ${resUsername}.`} 
     } catch (err) {
         console.error('Error sharing file:', err);
-        return "Error";
+        return {status: "Error"}
     }
 }
 
