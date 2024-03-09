@@ -19,8 +19,12 @@ const HomePage = () => {
       <Navbar username = {username} /> 
       <Drawer/>
       <div className="viewer">
+<<<<<<< HEAD
         pdf viewer
         <Viewer/>
+=======
+        {/* <Viewer/> */}viewer
+>>>>>>> d7f7ed5d1de5bc30dce7df7bbfded92fa77965cb
         {/* <iframe src="" width="100%" height="600px"></iframe> */}
       </div>
 

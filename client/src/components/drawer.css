@@ -106,3 +106,23 @@
   .buttons-container{
     margin: 10px 0px;
   }
+
+  .recipient{
+    line-height: 34px;
+    position: absolute;
+    top: 6em;
+    padding: 15px;
+    left: 21em;
+    border: solid 1px #750080;
+    width: 15em;
+    height: 5em;
+    
+    #recipient-input{
+      height: 2em;
+    }
+    #button-send{
+      padding: 5px;
+
+    }
+}
+
