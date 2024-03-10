@@ -73,10 +73,10 @@ const Drawer = ({onValueChange}) => {
           resUsername: resUsername,
         }),
       })
-        .then(data => {
-          if (data) {
-            console.log(data);
-            handlePopup(data.status);
+        .then(response => {
+          if (response.ok) {
+            console.log(response);
+            handlePopup('File successfully shared to '+resUsername);
           } else {
             throw new Error('Failed to share file');
           }

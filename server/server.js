@@ -146,10 +146,10 @@ app.post('/upload', upload.single('file'),(req, res) => {
     console.log(req.body)
     const userid = req.body.userid;
     const subname = req.body.subname;
-    //const filename = req.file.originalname;
-    //const uploadsres = Upload(userid,subname,filename);
+    const filename = req.file.originalname;
+    const uploadsres = Upload(userid,subname,filename);
 
-    //res.send('File uploaded successfully:'+uploadsres);
+    res.send('File uploaded successfully:'+uploadsres);
 });
 
 app.listen(PORT, () => {
