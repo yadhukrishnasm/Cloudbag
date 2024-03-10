@@ -7,8 +7,6 @@ function LoginPage() {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
 

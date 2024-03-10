@@ -1,50 +1,57 @@
 import React, { useState, useEffect } from 'react';
 
-const ImageViewer = (props) => {
+const Viewer = (props) => {
   const [imageSrc, setImageSrc] = useState('');
-  const [type,settype] = useState('')
-    
+  const [type, setType] = useState('');
+  const sharedValue = props.sharedValue
 
+  
   useEffect(() => {
+    console.log('sharedValue inside useEffect:', sharedValue);
 
-    fetch('https://localhost:5000/viewfile', {
+    if (sharedValue) {
+      fetch('https://localhost:5000/viewfile', {
         method: 'POST',
-        body:JSON.stringify({
-            userid: sessionStorage.getItem('userid'),
-            filename:props.filename
+        body: JSON.stringify({
+          userid: sessionStorage.getItem('userid'),
+          filename: sharedValue,
+        }),
+      })
+        .then(response => {
+          if (response.ok) {
+            return response.json(); // Assuming your response is in JSON format
+          } else {
+            throw new Error('Failed to fetch data');
+          }
         })
-    })
-    .then(response => {
-        if(response.ok){
-            console.log(response)
-            settype(response.contenttype)
-            setImageSrc(response.content)
-        }
-        const contentspace = document.getElementById('content');
-        if(type === 'image/jpeg' || type === 'image/png'){
-          contentspace.innerHTML = `<img src="data:image/png;base64,${imageSrc}" width="100%" height="600px">`;
-        }
-        else if(type === 'application/pdf'){
-          contentspace.innerHTML = `<object data="data:application/pdf;base64,${imageSrc}" width="100%" height="600px">`;
-        }
-        else if(type === 'text/plain'){
-          contentspace.innerHTML = `<object data="data:text/plain;base64,${imageSrc}" width="100%" height="600px">`;
-        }
-        else{
-          contentspace.textContent = imageSrc;
-        }
+        .then(data => {
+          console.log('Data fetched successfully:', data);
 
-    })
-    .catch(error =>{
-        console.log(error)
-    })
-
-  }, []);
+          setType(data.contenttype);
+          setImageSrc(data.content);
+        })
+        .catch(error => {
+          console.error('Error during data fetching:', error);
+        });
+    }
+  }, [sharedValue]); // Ensure useEffect runs when sharedValue changes
 
   return (
     <div id="content">
+      Render content based on fetched data
+      {type === 'image/jpeg' || type === 'image/png' ? (
+        <img src={`data:image/png;base64,${imageSrc}`} width="100%" height="600px" alt="Image" />
+      ) : type === 'application/pdf' ? (
+        <object data={`data:application/pdf;base64,${imageSrc}`} width="100%" height="600px" type="application/pdf">
+          PDF Viewer not available. Download the PDF to view.
+        </object>
+      ) : type === 'text/plain' ? (
+        <pre>{atob(imageSrc)}</pre>
+      ) : (
+        <div>{atob(imageSrc)}</div>
+      )}
     </div>
   );
 };
 
-export default ImageViewer;
+export default Viewer;

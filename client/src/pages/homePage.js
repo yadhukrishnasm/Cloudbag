@@ -1,27 +1,30 @@
 import {React,useState} from 'react';
-import Notebook from '../modules/notebook'; // Import the Notebook component
-import {Navbar} from '../components/navbar'
+import Notebook from '../modules/notebook';
+import {Navbar} from '../components/navbar';
 import { useParams } from 'react-router-dom';
 import Askai from '../modules/askai';
-import './styles/homepage.css'
+import './styles/homepage.css';
 import Drawer from '../components/drawer';
-import Viewer from '../components/viewer'
+import Viewer from '../components/viewer';
 
 const HomePage = () => {
-  const [sidebarWidth, setSidebarWidth] = useState(400); // Initial width of the sidebar
-
+  const [sidebarWidth, setSidebarWidth] = useState(400); 
+  const [sharedValue, setSharedValue] = useState('');
+  
+  const handleValueChange = (newValue) => {
+    console.log(newValue)
+    setSharedValue(newValue);
+  };
   const handleResize = (newWidth) => {
     setSidebarWidth(newWidth);
   }
-  const { username } = useParams();
+  // const { username } = useParams();
   return (
     <div>
-      <Navbar username = {username} /> 
-      <Drawer/>
+      <Navbar/> 
+      <Drawer onValueChange={handleValueChange}/>
       <div className="viewer">
-
-        pdf viewer
-        <Viewer/>
+        <Viewer sharedValue={sharedValue}/>
       </div>
 
 
@@ -42,4 +45,4 @@ const HomePage = () => {
   );
 }
 
-export default HomePage;
+export default HomePage

@@ -13,6 +13,8 @@
     transform: translateX(0); 
   }
   
+
+
   .drawer-button {
     width: 1.3em;
     height: fit-content;
@@ -78,6 +80,7 @@
     outline: none;
     width: 2em;
     height: 2em;
+    cursor: pointer;
     border: none;
   }
 
@@ -101,8 +104,9 @@
     font-size: large;
     font-family: monospace;
     text-wrap: nowrap;
+    cursor: pointer;
   }
-
+  
   .buttons-container{
     margin: 10px 0px;
   }

@@ -4,19 +4,20 @@ import Upload from "./upload.js"
 import Popup from "./popup.js"
 import {Viewer} from './viewer.js';
 
-const Drawer = () => {
+const Drawer = ({onValueChange}) => {
   const [drawer, setHideDrawer] = useState(false);
   const [pdfArray, setPdfArray] = useState([]);
-  const [selectedFile, setSelectedFile] = useState('');
   const [upload, setUpload] = useState(false);
   const [resUsername, setResUsername] = useState('');
   const [resname, setResname] = useState(false);
   const [popup, setPopup] = useState(false);
   const [message, setMessage] = useState('');
+  let selectedFile = '';
+ 
 
   useEffect(() => {
     fetchFileList();
-  }, [setHideDrawer]);
+  }, [drawer]);
 
   // Function to handle popup with a timeout
   const handlePopup = (msg) => {
@@ -72,10 +73,10 @@ const Drawer = () => {
           resUsername: resUsername,
         }),
       })
-        .then(response => {
-          if (response.ok) {
-            console.log(response);
-            handlePopup('File successfully shared');
+        .then(data => {
+          if (data) {
+            console.log(data);
+            handlePopup(data.status);
           } else {
             throw new Error('Failed to share file');
           }
@@ -90,6 +91,7 @@ const Drawer = () => {
   }
 
   const handleFileDelete = () => {
+    console.log(selectedFile);
     if (selectedFile) {
       fetch('http://localhost:5000/deletefile', {
         method: 'POST',
@@ -101,11 +103,11 @@ const Drawer = () => {
           filename: selectedFile,
         }),
       })
-        .then(response => {
-          if (response.ok) {
+        .then(data => {
+          if (data.ok) {
             console.log('File deleted successfully');
             fetchFileList();
-            handlePopup('File successfully deleted');
+            handlePopup(data.status);
           } else {
             throw new Error('Failed to delete file');
           }
@@ -115,7 +117,13 @@ const Drawer = () => {
           handlePopup('Failed to delete file');
         });
     }
+
   };
+
+  const setfilename =(value)=>{
+    selectedFile = value;
+    return selectedFile;
+  }
 
   return (
     <div>
@@ -133,17 +141,28 @@ const Drawer = () => {
         <hr width="100%" size="2" color='black' />
         {pdfArray.map((content, index) => (
           <div className="files" key={index}>
-            <a className='filename' href=''>{content}</a>
+            <pre className='filename' onClick={()=>{
+              console.log(content)
+              setHideDrawer(!drawer)
+              onValueChange(content);
+              //   (prevContent) => {
+              //   if (prevContent !== content) {
+              //     console.log(content)
+              //     return content;
+              //   }
+              //   return prevContent;
+              // });
+            }}>{content}</pre>
             <br />
 
             <div className="buttons-container">
-              <button className="buttons delete" onClick={() => {
-                setSelectedFile(content);
+              <button className="buttons delete" id={index} onClick={() => {
+                setfilename(content);
                 handleFileDelete();
               }}> </button>{' '}
 
               <button className=' buttons share' onClick={() => {
-                setSelectedFile(content);
+                setfilename(content);
                 setResname(!resname);
               }}></button>
             </div>
