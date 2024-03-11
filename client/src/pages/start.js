@@ -32,14 +32,15 @@ export default function Start() {
             </div>
             <div class="about-bar">
                 <h2>About</h2>
-                <p>Introducing Cloudbag: Your ultimate study
+                <div class="about-box">
+                <span>Introducing Cloudbag: Your ultimate study
                      partner. This web app redefines studying.
                       Cloud storage lightens your load, quick
                        access for reviews. AI support boosts
                         learning, while smart note-taking 
                         simplifies. Embrace Cloudbag for 
-                        effortless, efficient education.</p>
-            </div>
+                     effortless, efficient education.</span>
+            </div></div>
             <div class="bottom-bar"></div>
         </div>
         );

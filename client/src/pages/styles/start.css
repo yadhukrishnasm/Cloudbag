@@ -33,7 +33,7 @@ body{
   }
 
   .threed-text:hover span {
-    transform: rotateZ(180deg);
+    transform: rotateY(180deg);
   }
 
   .threed-text span:nth-child(odd) {
@@ -49,7 +49,7 @@ body{
   }
 
   .space-between {
-    margin-right: 20px; /* Adjust the value to set the desired distance */
+    margin-right: 20px;
   }
 
   a {
@@ -59,6 +59,16 @@ body{
     color: #750080; 
   }
   .about-bar{
-    text-wrap: 600px;
+    color:black;
     text-align: center;
+    padding-top: 10%;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  .about-box{
+    background-color: aliceblue;
+    padding: 10%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-radius: 15px;
   }
