@@ -67,7 +67,7 @@ const Askai = () => {
       </form>
 
       <div className="container">
-        {link && <img src={link} alt="Response" width={200} />} 
+        {link && <img src={link} alt="Response" width={300} />} 
         <p className={response ? "response" : ""}>{response}</p>
       </div>
     </div>

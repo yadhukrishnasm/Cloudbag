@@ -1,20 +1,35 @@
 .notebook-container {
-    width: 350px;
-    height: 200px;
-    border: 1px solid #ccc;
+    width: 100%;
+    height: 30vh;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    i{
+      position:relative;
+      left: -10px;
+    }
   }
   
   .notebook-content {
-    width: 100%;
+    width: 18em;
     height: 100%;
-    padding: 5px; 
-    background-color: rgb(255, 255, 255);
+    padding: 15px;
+    border-radius: 10px; 
+    background-color: #fff6e8;
+    scrollbar-color: transparent;
     overflow: auto; 
+    pre{
+      font-size: 15px;
+      word-wrap: break-word;
+    }
   }
   
   .notebook-textarea {
+    transition: all .2s ease-in-out;
     width: 90%;
+    border-radius: 10px; 
     height: 100%;
-    padding: 5px;
+    padding: 15px;
+    outline: none;
   }
   

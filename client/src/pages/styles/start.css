@@ -1,0 +1,64 @@
+body{
+    background-color: #F9F0DF;
+}
+
+.mid-bar{
+    padding-top: 15px;
+    justify-content: center;
+    text-align: center;
+}
+
+.top-bar{
+    height: 100px;
+    display: flex;
+    justify-content: end;
+    font-size: large;
+    padding: 15px;
+    font-weight: bold;
+}
+
+
+  .threed-text {
+    font-size: 150px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    position: relative;
+    perspective: 1000px;
+  }
+
+  .threed-text span {
+    display: inline-block;
+    transition: transform 0.5s;
+  }
+
+  .threed-text:hover span {
+    transform: rotateZ(180deg);
+  }
+
+  .threed-text span:nth-child(odd) {
+    background: linear-gradient(90deg, #750080, #b166b8);
+    background-clip: text;
+    color: transparent;
+  }
+
+  .threed-text span:nth-child(even) {
+    background: linear-gradient(90deg, #750080, #ab67b1);
+    background-clip: text;
+    color: transparent;
+  }
+
+  .space-between {
+    margin-right: 20px; /* Adjust the value to set the desired distance */
+  }
+
+  a {
+    color: black;
+  }
+  .top-bar a:hover {
+    color: #750080; 
+  }
+  .about-bar{
+    text-wrap: 600px;
+    text-align: center;
+  }

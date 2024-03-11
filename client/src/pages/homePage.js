@@ -18,10 +18,11 @@ const HomePage = () => {
   const handleResize = (newWidth) => {
     setSidebarWidth(newWidth);
   }
-  // const { username } = useParams();
+  console.log(useParams())
+  const { username } = useParams();
   return (
     <div>
-      <Navbar/> 
+      <Navbar username = {username}/> 
       <Drawer onValueChange={handleValueChange}/>
       <div className="viewer">
         <Viewer sharedValue={sharedValue}/>
@@ -29,7 +30,6 @@ const HomePage = () => {
 
 
       <div className="sidebar" style={{ width: sidebarWidth }}>
-      <div className="resize-handle" onMouseDown={() => handleResize(sidebarWidth + 10)}></div>
         <div className="chat">
           <div id='chatbot'>
             <Askai />

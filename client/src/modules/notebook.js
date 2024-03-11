@@ -27,6 +27,7 @@ const Notebook = () => {
 
   return (
     <div className="notebook-container">
+      <pre><i><b>Notedown your thoughts here</b> (Double click to write)</i></pre>
       {isEditing ? (
         <textarea
           autoFocus
@@ -34,13 +35,14 @@ const Notebook = () => {
           onChange={handleChange}
           onBlur={handleBlur}
           className="notebook-textarea"
+          placeholder='Write you note here'
         ></textarea>
       ) : (
         <div 
           className="notebook-content"
           onDoubleClick={handleDoubleClick}
         >
-          <pre>{text || '\u00a0'}</pre> {}
+          <pre >{text || '\u00a0'}</pre> {}
         </div>
       )}
     </div>

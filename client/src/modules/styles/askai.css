@@ -7,9 +7,10 @@
     outline: none;
     color: #750080;
     font-family: monospace;
-    padding: 0px;
+    padding-left: 10px;
     font-size: large;
     text-wrap:balance;
+
 }
 
 .search-form{
@@ -17,6 +18,7 @@
     flex-direction: row;
     align-items: center;
 }
+
 #ques-search{
     width: 40px;
     height: 40px;        
@@ -31,6 +33,7 @@
     background-repeat: no-repeat;
     background-position: 4px 4px;
 }
+
 #ques-mic{
     width: 3em;
     height: 3em;
@@ -45,6 +48,7 @@
     background-position: 4px 4px;
     z-index: 4;
 }
+
 #ques-mic:hover{
     background-color: #F9F0DF
 }
@@ -55,10 +59,10 @@
     flex-direction: column;
 }
 
-
 .response{
-    color: black;
-    border: 1px solid #750080;
+    color:#750080;
+    border: 1px solid #F9F0DF ;
+    background-color:#F9F0DF;
     border-radius: 5px;
     padding: 5px;
     box-shadow: 0px 1px 5px 1px;

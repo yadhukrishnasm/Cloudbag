@@ -1,6 +1,6 @@
 .viewer{
-    height: 100%;
-    width: max-content;
+    height: 70vh;
+    width: 70vw;
     float: left;
     padding: 10px;
 }
@@ -17,23 +17,17 @@
     position: fixed;
     right: 0px;
     top: 10vh;
-    overflow-y: auto;
+    overflow-y: scroll;
     overflow-x: hidden;
     z-index: -1;
     padding: 10px;
-    
 }
 .chat{
     height: fit-content;
     border-bottom: 1px solid #750080;
 }
 
-.resize-handle {
-    width: 10px;
-    height: 100%;
-    background-color: #555;
-    cursor: ew-resize;
-    position: absolute;
-    top: 0;
-    left: -5px;
+  .notes{
+    height: calc(60%);
+    padding-top: 20px;
   }

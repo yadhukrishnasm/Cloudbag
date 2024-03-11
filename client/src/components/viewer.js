@@ -10,8 +10,11 @@ const Viewer = (props) => {
     console.log('sharedValue inside useEffect:', sharedValue);
 
     if (sharedValue) {
-      fetch('https://localhost:5000/viewfile', {
+      fetch('http://localhost:5000/viewfile', {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
           userid: sessionStorage.getItem('userid'),
           filename: sharedValue,
@@ -38,7 +41,7 @@ const Viewer = (props) => {
 
   return (
     <div id="content">
-      Render content based on fetched data
+
       {type === 'image/jpeg' || type === 'image/png' ? (
         <img src={`data:image/png;base64,${imageSrc}`} width="100%" height="600px" alt="Image" />
       ) : type === 'application/pdf' ? (

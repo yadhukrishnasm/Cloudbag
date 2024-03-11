@@ -29,6 +29,7 @@ const Drawer = ({onValueChange}) => {
       setMessage(''); 
     }, 3000);
   }
+  console.log(window.onmousedown);
 
   const fetchFileList = () => {
     fetch('http://localhost:5000/filelist', {
@@ -134,7 +135,7 @@ const Drawer = ({onValueChange}) => {
 
       <div className={`drawer-container ${drawer ? 'open' : ''}`}>
 
-        <button className="upload-drawer-btn" onClick={() => setUpload(!upload)}> Upload file </button>
+        <button className="upload-drawer-btn" onClick={() => setUpload(!upload)} > Upload file </button>
         {upload && (
           <Upload />
         )}
@@ -145,16 +146,8 @@ const Drawer = ({onValueChange}) => {
               console.log(content)
               setHideDrawer(!drawer)
               onValueChange(content);
-              //   (prevContent) => {
-              //   if (prevContent !== content) {
-              //     console.log(content)
-              //     return content;
-              //   }
-              //   return prevContent;
-              // });
             }}>{content}</pre>
-            <br />
-
+            <div class="gradient-mask"></div>
             <div className="buttons-container">
               <button className="buttons delete" id={index} onClick={() => {
                 setfilename(content);
