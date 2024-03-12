@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloudbag</title>
+    <!-- <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script> -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+    <style>
+        /* Set width and height of model-viewer element */
+        model-viewer {
+            width: 500px;
+            height: 500px;
+        }
+        .model-div{
+            float: right;
+            background-color: rgb(255, 255, 255);
+            width: 50%;
+        }
+
+    </style>
+</head>
+<body>
+    <h3>Cloudbag-AR</h3>
+    <select id="3dmodels">
+        <option value="heart">Heart</option>
+        <option value="brain">Brain</option>
+        <option value="lungs">Lungs</option>
+        <option value="kidney">Kidney</option>
+        <option value="skeleton">Skeleton</option>
+    </select>
+    <button onClick="modelview()">View Model</button>
+    <div class="model-div" id="3dmodel"></div>
+
+</body>
+<script>
+    function modelview(){
+        const model = document.getElementById('3dmodels').value;
+        document.getElementById('3dmodel').innerHTML = `<model-viewer src="3dmodels/${model}.glb" alt="" ar auto-rotate camera-controls ></model-viewer>`;
+    }
+</script>
+</html>

@@ -13,6 +13,7 @@ const DeleteAccount  = require('./routes/deleteaccount.js');
 const ViewFile = require('./routes/viewfile.js');
 const dbConnectionMiddleware = require('./middleware/dbConnection');
 const multer = require('multer')
+const path = require('path')
 
 const app = express();
 const PORT = 5000;
@@ -23,6 +24,13 @@ app.use(bodyParser.json());
 dbConnectionMiddleware()
 app.use(express.urlencoded({ extended: true }));
 
+app.set('views', path.join(__dirname,'views'));
+app.set('view engine', 'ejs');
+app.use( express.static("views") );
+
+app.get('/ar', (req,res) => {
+  res.render('ar')
+})
 
 app.post('/login',async(req, res) => {
   try {
