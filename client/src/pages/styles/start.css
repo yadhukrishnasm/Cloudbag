@@ -1,5 +1,30 @@
-body{
+.body-frame{
     background-color: #F9F0DF;
+}
+
+.top-bar{
+    height: fit-content;
+    display: flex;
+    justify-content: flex-end;
+    font-size: large;
+    padding: 25px;
+    font-weight: bold;
+}
+
+.get-started{
+  padding: 10px 20px;
+  color: white;
+  background-color: black;
+  border-radius: 10px;
+}
+.get-started:hover{
+  box-shadow: 0px 5px 7px 1px rgba(0, 0, 0, 0.74);
+  transform: translateY(-5px);
+  transition: all .5s ease-in-out;
+}
+
+.about{
+  padding:30px
 }
 
 .mid-bar{
@@ -8,57 +33,48 @@ body{
     text-align: center;
 }
 
-.top-bar{
-    height: 100px;
-    display: flex;
-    justify-content: end;
-    font-size: large;
-    padding: 15px;
-    font-weight: bold;
+.threed-text {
+  font-size: 150px;
+  font-weight: bold;
+  letter-spacing: 5px;
+  position: relative;
+  perspective: 1000px;
 }
 
+.threed-text span {
+  display: inline-block;
+  transition: transform 0.5s;
+}
 
-  .threed-text {
-    font-size: 150px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    position: relative;
-    perspective: 1000px;
-  }
+.threed-text:hover span {
+  transform: rotateZ(180deg);
+}
 
-  .threed-text span {
-    display: inline-block;
-    transition: transform 0.5s;
-  }
+.threed-text span:nth-child(odd) {
+  background: linear-gradient(90deg, #750080, #74067e);
+  background-clip: text;
+  color: transparent;
+}
 
-  .threed-text:hover span {
-    transform: rotateZ(180deg);
-  }
+.threed-text span:nth-child(even) {
+  background: linear-gradient(90deg, #67076f, #750080);
+  background-clip: text;
+  color: transparent;
+}
 
-  .threed-text span:nth-child(odd) {
-    background: linear-gradient(90deg, #750080, #b166b8);
-    background-clip: text;
-    color: transparent;
-  }
+.space-between {
+  margin-right: 30px; /* Adjust the value to set the desired distance */
+}
 
-  .threed-text span:nth-child(even) {
-    background: linear-gradient(90deg, #750080, #ab67b1);
-    background-clip: text;
-    color: transparent;
-  }
-
-  .space-between {
-    margin-right: 20px; /* Adjust the value to set the desired distance */
-  }
-
-  a {
-    color: black;
-  }
-  .top-bar a:hover {
-    color: #750080; 
-  }
-  .about-bar{
-    text-wrap: 600px;
-    text-align: center;
-  }
+a {
+  color: black;
+}
+.top-bar a:hover {
+  color: #750080; 
+}
+.about-bar{
+  margin: 0 auto;
+  width: 60vw;
+  text-wrap: 600px;
+  text-align: center;
+}

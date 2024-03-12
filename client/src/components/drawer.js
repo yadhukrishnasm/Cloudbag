@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect ,useRef} from 'react';
 import './drawer.css';
 import Upload from "./upload.js"
 import Popup from "./popup.js"
-import {Viewer} from './viewer.js';
+import { PromptBox } from './prompt-box.js';
 
 const Drawer = ({onValueChange}) => {
   const [drawer, setHideDrawer] = useState(false);
@@ -12,12 +12,14 @@ const Drawer = ({onValueChange}) => {
   const [resname, setResname] = useState(false);
   const [popup, setPopup] = useState(false);
   const [message, setMessage] = useState('');
-  let selectedFile = '';
+  const [prompt,setprompt] = useState(false)
+  const [type,setType] = useState('')
+  let selectedFile = useRef('');
  
 
   useEffect(() => {
     fetchFileList();
-  }, [drawer]);
+  },[]);
 
   // Function to handle popup with a timeout
   const handlePopup = (msg) => {
@@ -29,7 +31,6 @@ const Drawer = ({onValueChange}) => {
       setMessage(''); 
     }, 3000);
   }
-  console.log(window.onmousedown);
 
   const fetchFileList = () => {
     fetch('http://localhost:5000/filelist', {
@@ -62,7 +63,8 @@ const Drawer = ({onValueChange}) => {
 
   const handleFileShare = () => {
     setResname(!resname);
-    if (selectedFile && resUsername) {
+    console.log(selectedFile.current);
+    if (selectedFile.current && resUsername) {
       fetch('http://localhost:5000/sharedata', {
         method: 'POST',
         headers: {
@@ -70,7 +72,7 @@ const Drawer = ({onValueChange}) => {
         },
         body: JSON.stringify({
           userid: sessionStorage.getItem('userid'),
-          filename: selectedFile,
+          filename: selectedFile.current,
           resUsername: resUsername,
         }),
       })
@@ -92,8 +94,8 @@ const Drawer = ({onValueChange}) => {
   }
 
   const handleFileDelete = () => {
-    console.log(selectedFile);
-    if (selectedFile) {
+    console.log(selectedFile.current);
+    if (selectedFile.current) {
       fetch('http://localhost:5000/deletefile', {
         method: 'POST',
         headers: {
@@ -101,7 +103,7 @@ const Drawer = ({onValueChange}) => {
         },
         body: JSON.stringify({
           userid: sessionStorage.getItem('userid'),
-          filename: selectedFile,
+          filename: selectedFile.current,
         }),
       })
         .then(data => {
@@ -122,10 +124,23 @@ const Drawer = ({onValueChange}) => {
   };
 
   const setfilename =(value)=>{
-    selectedFile = value;
-    return selectedFile;
+    selectedFile.current = value;
   }
 
+  const showPrompt =(message)=>{  
+    setType(message)
+    setprompt(!prompt)
+  }
+
+  const handleDataReturn = (data,key)=>{
+    if(data){
+      handleFileDelete()
+    }
+    setprompt(!prompt)
+  }
+  
+
+  
   return (
     <div>
       <div className={`drawer-button ${drawer ? 'change' : ''}`} onClick={toggleDrawer}>
@@ -133,6 +148,9 @@ const Drawer = ({onValueChange}) => {
         <div id='bar2'></div>
       </div>
 
+      {prompt && (
+       <PromptBox onDataReturn={handleDataReturn} content={type}/>
+      )}
       <div className={`drawer-container ${drawer ? 'open' : ''}`}>
 
         <button className="upload-drawer-btn" onClick={() => setUpload(!upload)} > Upload file </button>
@@ -151,8 +169,8 @@ const Drawer = ({onValueChange}) => {
             <div className="buttons-container">
               <button className="buttons delete" id={index} onClick={() => {
                 setfilename(content);
-                handleFileDelete();
-              }}> </button>{' '}
+                showPrompt('Delete')
+              }}> </button>
 
               <button className=' buttons share' onClick={() => {
                 setfilename(content);

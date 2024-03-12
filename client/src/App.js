@@ -13,11 +13,11 @@ console.clear();
     <BrowserRouter>
 
       <Routes>
-        <Route path="/" element={ <LoginPage /> } />
+        <Route path="/login" element={ <LoginPage /> } />
         <Route path="/main_homepage/:username" element={ <HomePage /> } />
         <Route path="/register" element={ <RegisterPage /> } />
         <Route path="/gramma" element = { <Cloudspell/> }></Route>
-        <Route path="/start" element = {<Start/>}></Route>
+        <Route path="/" element = {<Start/>}></Route>
       </Routes>
     </BrowserRouter>
   );

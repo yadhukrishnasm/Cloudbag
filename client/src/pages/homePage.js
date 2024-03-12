@@ -18,7 +18,6 @@ const HomePage = () => {
   const handleResize = (newWidth) => {
     setSidebarWidth(newWidth);
   }
-  console.log(useParams())
   const { username } = useParams();
   return (
     <div>
