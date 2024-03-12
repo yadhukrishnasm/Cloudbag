@@ -49,6 +49,9 @@
 .threed-text:hover span {
   transform: rotateZ(180deg);
 }
+  .threed-text:hover span {
+    transform: rotateY(180deg);
+  }
 
 .threed-text span:nth-child(odd) {
   background: linear-gradient(90deg, #750080, #74067e);
@@ -56,25 +59,33 @@
   color: transparent;
 }
 
-.threed-text span:nth-child(even) {
-  background: linear-gradient(90deg, #67076f, #750080);
-  background-clip: text;
-  color: transparent;
-}
+  .threed-text span:nth-child(even) {
+    background: linear-gradient(90deg, #750080, #ab67b1);
+    background-clip: text;
+    color: transparent;
+  }
 
-.space-between {
-  margin-right: 30px; /* Adjust the value to set the desired distance */
-}
+  .space-between {
+    margin-right: 20px;
+  }
 
-a {
-  color: black;
-}
-.top-bar a:hover {
-  color: #750080; 
-}
-.about-bar{
-  margin: 0 auto;
-  width: 60vw;
-  text-wrap: 600px;
-  text-align: center;
-}
+  a {
+    color: black;
+  }
+  .top-bar a:hover {
+    color: #750080; 
+  }
+  .about-bar{
+    color:black;
+    text-align: center;
+    padding-top: 10%;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  .about-box{
+    background-color: aliceblue;
+    padding: 10%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-radius: 15px;
+  }

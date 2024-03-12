@@ -80,6 +80,7 @@ const Drawer = ({onValueChange}) => {
           if (response.ok) {
             console.log(response);
             handlePopup('File successfully shared to '+resUsername);
+            
           } else {
             throw new Error('Failed to share file');
           }
@@ -106,14 +107,11 @@ const Drawer = ({onValueChange}) => {
           filename: selectedFile.current,
         }),
       })
-        .then(data => {
-          if (data.ok) {
-            console.log('File deleted successfully');
-            fetchFileList();
-            handlePopup(data.status);
-          } else {
-            throw new Error('Failed to delete file');
-          }
+        .then(response => response.text())
+        .then(data=>{
+          fetchFileList();
+          handlePopup(data);
+          console.log(data)
         })
         .catch(error => {
           console.error('Error during file deletion:', error);
@@ -153,7 +151,7 @@ const Drawer = ({onValueChange}) => {
       )}
       <div className={`drawer-container ${drawer ? 'open' : ''}`}>
 
-        <button className="upload-drawer-btn" onClick={() => setUpload(!upload)} > Upload file </button>
+        <button className="upload-drawer-btn" onClick={() => setUpload(!upload)}> Upload file </button>
         {upload && (
           <Upload />
         )}
@@ -164,8 +162,16 @@ const Drawer = ({onValueChange}) => {
               console.log(content)
               setHideDrawer(!drawer)
               onValueChange(content);
+              //   (prevContent) => {
+              //   if (prevContent !== content) {
+              //     console.log(content)
+              //     return content;
+              //   }
+              //   return prevContent;
+              // });
             }}>{content}</pre>
-            <div class="gradient-mask"></div>
+            <br />
+
             <div className="buttons-container">
               <button className="buttons delete" id={index} onClick={() => {
                 setfilename(content);
