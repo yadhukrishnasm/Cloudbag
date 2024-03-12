@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&display=swap');
+
 .body-frame{
-    background-color: #F9F0DF;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(90deg, #750080, #500456)
 }
 
 .top-bar{
@@ -24,12 +28,13 @@
 }
 
 .about{
-  padding:30px
+  padding:30px;
 }
 
 .mid-bar{
-    padding-top: 15px;
-    justify-content: center;
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px 4em;
     text-align: center;
 }
 
@@ -54,16 +59,18 @@
   }
 
 .threed-text span:nth-child(odd) {
-  background: linear-gradient(90deg, #750080, #74067e);
+  /* background: linear-gradient(90deg, #F9F0DF, #e2cea8); */
+  background-color: #F9F0DF;
   background-clip: text;
   color: transparent;
 }
 
-  .threed-text span:nth-child(even) {
-    background: linear-gradient(90deg, #750080, #ab67b1);
-    background-clip: text;
-    color: transparent;
-  }
+.threed-text span:nth-child(even) {
+  /* background: linear-gradient(90deg, #decba7, #F9F0DF); */
+  background-color: #F9F0DF;
+  background-clip: text;
+  color: transparent;
+}
 
   .space-between {
     margin-right: 20px;
@@ -76,16 +83,21 @@
     color: #750080; 
   }
   .about-bar{
-    color:black;
-    text-align: center;
-    padding-top: 10%;
-    padding-left: 10%;
-    padding-right: 10%;
+    color:white;
+    text-align: left;
+    padding: 4em 3em;
   }
   .about-box{
-    background-color: aliceblue;
-    padding: 10%;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    border-radius: 15px;
+    inline-size: 40em;
+    font-family: "Madimi One", sans-serif;
+    word-spacing: 5px;
+    font-size: larger;
+  }
+  .homepage-image{
+    background-image: url('../../../public/vecteezy_3d-illustration-learn-math-at-home_20946545.png');
+    width: 50em;
+    height: 30em;
+    background-size: contain;
+    background-repeat: no-repeat;
+
   }

@@ -18,28 +18,29 @@ export default function Start() {
                 </Link>
             </div>
             <div class="mid-bar">
-                <div class="threed-text">
-                    <span>C</span>
-                    <span>l</span>
-                    <span>o</span>
-                    <span>u</span>
-                    <span>d</span>
-                    <span>b</span>
-                    <span>a</span>
-                    <span>g</span>
-                </div>
+                <div class="about-bar">
+                    <div class="threed-text">
+                        <span>C</span>
+                        <span>l</span>
+                        <span>o</span>
+                        <span>u</span>
+                        <span>d</span>
+                        <span>b</span>
+                        <span>a</span>
+                        <span>g</span>
+                    </div>
+                        <div class="about-box">Introducing Cloudbag: Your ultimate study
+                            partner. This web app redefines studying.
+                            Cloud storage lightens your load, quick
+                            access for reviews. AI support boosts
+                            learning, while smart note-taking 
+                            simplifies. Embrace Cloudbag for 
+                            effortless, efficient education.
+                        </div>
+                    </div>
+                <div className="homepage-image"></div>
             </div>
-            <div class="about-bar">
-                <h2>About</h2>
-                <div class="about-box">
-                <span>Introducing Cloudbag: Your ultimate study
-                     partner. This web app redefines studying.
-                      Cloud storage lightens your load, quick
-                       access for reviews. AI support boosts
-                        learning, while smart note-taking 
-                        simplifies. Embrace Cloudbag for 
-                     effortless, efficient education.</span>
-            </div></div>
+            
             <div class="bottom-bar"></div>
         </div>
         );
