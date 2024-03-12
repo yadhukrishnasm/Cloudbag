@@ -21,6 +21,8 @@ const ViewFile = async (userId, filename) => {
                     contentType = 'image/png';
                 } else if (filename.endsWith('.txt')) {
                     contentType = 'text/plain';
+                } else if(filename.endsWith('.mp3')){
+                    contentType = 'audio/mpeg';
                 } else {
                     contentType = 'application/octet-stream'; // default to binary data
                 }

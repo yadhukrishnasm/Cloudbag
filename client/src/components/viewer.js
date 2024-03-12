@@ -50,6 +50,10 @@ const Viewer = (props) => {
         </object>
       ) : type === 'text/plain' ? (
         <pre>{atob(imageSrc)}</pre>
+      ) : type === 'audio/mpeg' ? (
+        <audio controls>
+          <source src={`data:${type};base64,${imageSrc}`} type={type}/>
+        </audio>
       ) : (
         <div>{atob(imageSrc)}</div>
       )}
