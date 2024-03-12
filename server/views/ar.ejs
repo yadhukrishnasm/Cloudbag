@@ -14,14 +14,32 @@
         }
         .model-div{
             float: right;
-            background-color: rgb(255, 255, 255);
+            background-color: #F9F0DF;
             width: 50%;
         }
-
+        .view{
+            padding: 10px 20px;
+            color: white;
+            background-color: #750080;
+            border-radius: 10px;
+        }
+        body{
+            justify-content: center;
+            text-align: center;
+            background-color: #F9F0DF;
+        }
+        h2{
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+        }
+        select{
+            border-radius: 10px;
+            empty-cells: hide;
+        }
     </style>
 </head>
 <body>
-    <h3>Cloudbag-AR</h3>
+    <h2>Cloudbag-AR</h2>
     <select id="3dmodels">
         <option value="heart">Heart</option>
         <option value="brain">Brain</option>
@@ -29,7 +47,7 @@
         <option value="kidney">Kidney</option>
         <option value="skeleton">Skeleton</option>
     </select>
-    <button onClick="modelview()">View Model</button>
+    <button onClick="modelview()" class="view">View Model</button>
     <div class="model-div" id="3dmodel"></div>
 
 </body>
