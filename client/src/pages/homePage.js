@@ -35,7 +35,7 @@ const HomePage = () => {
           </div>
         </div>  
         <div className="notes">
-          <Notebook /> 
+          <Notebook sharedValue={sharedValue}/> 
         </div>
       </div>
 
