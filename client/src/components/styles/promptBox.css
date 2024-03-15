@@ -15,4 +15,24 @@
     width: 20em;
     background-color: #F9F0DF;
     z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 10px;
+    border: none;
+}
+
+.prompt-buttons{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    button{
+        border: none #750080;
+        border-radius: 5px;
+        color: #F9F0DF;
+        padding: 10px;
+        background-color: #750080;
+    }
 }
