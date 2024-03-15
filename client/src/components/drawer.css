@@ -7,7 +7,7 @@
     transition: transform ease-in-out 0.2s; 
     transform: translateX(-100%);
     padding: 16px;  
-
+    overflow-y: auto;
 }
 
   .drawer-container.open {

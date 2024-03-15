@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './styles/viewer.css';
 
 const Viewer = (props) => {
   const [imageSrc, setImageSrc] = useState('');
