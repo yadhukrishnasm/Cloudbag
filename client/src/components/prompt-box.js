@@ -17,8 +17,10 @@ export const PromptBox = (props) => {
     <div className="prompt">
       <div className="prompt-box">
         <pre>Do you want to continue</pre>
-        <button onClick={() => handleClick(true)}>{props.content}</button>
-        <button onClick={() => handleClick(false)}>Cancel</button>
+        <div className="prompt-buttons">
+          <button onClick={() => handleClick(true)}>{props.content}</button>
+          <button onClick={() => handleClick(false)}>Cancel</button>
+        </div>
       </div>
     </div>
   );

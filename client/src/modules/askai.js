@@ -59,7 +59,7 @@ const Askai = () => {
 
   return (
     <div>
-      <pre>Ask AI</pre>
+      <pre id='head'>Ask AI</pre>
       <form onSubmit={handleSubmit} className='search-form'>
         <input type='text' name="note" id='ques-InputBox' />
         <button type="submit" id='ques-search'></button>

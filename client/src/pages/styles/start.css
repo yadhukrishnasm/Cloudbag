@@ -44,6 +44,7 @@
   letter-spacing: 5px;
   position: relative;
   perspective: 1000px;
+  padding-bottom: 40px;
 }
 
 .threed-text span {
@@ -54,9 +55,9 @@
 .threed-text:hover span {
   transform: rotateZ(180deg);
 }
-  .threed-text:hover span {
-    transform: rotateY(180deg);
-  }
+.threed-text:hover span {
+  transform: rotateY(180deg);
+}
 
 .threed-text span:nth-child(odd) {
   /* background: linear-gradient(90deg, #F9F0DF, #e2cea8); */
@@ -99,5 +100,5 @@
     height: 30em;
     background-size: contain;
     background-repeat: no-repeat;
-
   }
+ 

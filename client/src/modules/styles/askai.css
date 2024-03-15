@@ -13,6 +13,10 @@
 
 }
 
+#head{
+    font-size: 15px;
+}
+
 .search-form{
     display: flex;
     flex-direction: row;
