@@ -8,8 +8,6 @@ const Viewer = (props) => {
 
   
   useEffect(() => {
-    console.log('sharedValue inside useEffect:', sharedValue);
-
     if (sharedValue) {
       fetch('http://localhost:5000/viewfile', {
         method: 'POST',

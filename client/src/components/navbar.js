@@ -19,7 +19,6 @@ export const Navbar = ()=>{
     }
   }, [location.pathname]);
 
-  console.log(username)
   useEffect(() => {
     const currentEndpoint = location.pathname;
     if (currentEndpoint === '/gramma') {
