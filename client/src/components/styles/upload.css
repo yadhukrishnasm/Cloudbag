@@ -13,3 +13,14 @@
 .upload-container{
   margin: 10px;
 }
+#upload-button{
+  height: 2.5em;
+  width: 35em;
+  padding: 5px;
+  border-radius: 10px;
+  border-style: hidden;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  font-weight: bolder;
+  background-color:#F9F0DF;
+  color:#750080 ;
+}

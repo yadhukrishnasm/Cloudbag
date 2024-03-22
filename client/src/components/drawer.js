@@ -21,9 +21,9 @@ const Drawer = ({onValueChange}) => {
 
   useEffect(() => {
     fetchFileList();
-  },[]);
+  },[upload,drawer]);
 
-  // Function to handle popup with a timeout
+ 
   const handlePopup = (msg) => {
     setMessage(msg);
     setPopup(true);
