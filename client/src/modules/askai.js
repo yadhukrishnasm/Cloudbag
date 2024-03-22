@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import './styles/askai.css';
+import Loading from '../components/loading';
 
 const Askai = () => {
   const [response, setResponse] = useState('');
   const [link, setLink] = useState('');
   const [isListening, setIsListening] = useState(false);
+  const [loading, setloading] = useState(false);
 
   const startListening = () => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -33,8 +35,8 @@ const Askai = () => {
   };
 
   const sendQuestion = (question) => {
+    setloading(true)
     console.log(question);
-
     fetch('http://localhost:5000/askai', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -42,6 +44,7 @@ const Askai = () => {
     })
       .then((response) => response.json())
       .then((data) => {
+        setloading(false);
         console.log(data);
         setResponse(data.answer);
         setLink(data.imagelink);
@@ -57,16 +60,21 @@ const Askai = () => {
     sendQuestion(question);
   };
 
+
   return (
     <div>
+      
       <pre id='head'>Ask AI</pre>
       <form onSubmit={handleSubmit} className='search-form'>
-        <input type='text' name="note" id='ques-InputBox' />
+        <input type='text' name="note" id='ques-InputBox'/>
         <button type="submit" id='ques-search'></button>
         <button onClick={startListening} disabled={isListening} id='ques-mic'></button>
       </form>
 
       <div className="container">
+        {loading &&(
+          <Loading text="thinking"/>
+        )}
         {link && <img src={link} alt="Response" width={300} />} 
         <p className={response ? "response" : ""}>{response}</p>
       </div>

@@ -21,6 +21,7 @@ function LoginPage() {
 
       if (userData.status === 1) {
         navigate(`/main_homepage/${username}`);
+        sessionStorage.setItem("username",username);
         sessionStorage.setItem("userid",userData.userid);
       } else {
         console.error('Login failed:', userData.message);

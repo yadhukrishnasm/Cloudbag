@@ -3,10 +3,11 @@ import {Link, useLocation} from 'react-router-dom';
 import Avatar from './avatar';
 import './navbar.css';
 
-export const Navbar = ({username})=>{
+export const Navbar = ()=>{
   const [shouldDisplay, setShouldDisplay] = useState(true);
   const location = useLocation();
   const [links,setlinks] = useState(["AR","Cloudspell"])
+  const username = sessionStorage.getItem("username")
 
   useEffect(() => {
     const currentEndpoint = location.pathname;
@@ -18,11 +19,13 @@ export const Navbar = ({username})=>{
     }
   }, [location.pathname]);
 
+  console.log(username)
   useEffect(() => {
     const currentEndpoint = location.pathname;
-
     if (currentEndpoint === '/gramma') {
-      setlinks(["AR","Home"]);
+      setlinks(["AR","Home","/main_homepage/"+username]);
+    }else{
+      setlinks(["AR","Cloudspell","/gramma"])
     }
   }, [location.pathname]);
 
@@ -42,7 +45,7 @@ export const Navbar = ({username})=>{
           <div id="right">
                 <span id='links'>
                   <span className ='link' onClick={redirectToARPage}>{links[0]}</span>
-                  <Link className ='link' to ="/gramma">{links[1]}</Link>
+                  <Link className ='link' to ={links[2]}>{links[1]}</Link>
                 </span>
                 <span id='user'>
                   <Avatar username = {username}/>  

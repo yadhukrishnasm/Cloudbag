@@ -2,6 +2,7 @@ import React, { useState, useEffect ,useRef} from 'react';
 import './drawer.css';
 import Upload from "./upload.js"
 import Popup from "./popup.js"
+import Loading from './loading.js';
 import { PromptBox } from './prompt-box.js';
 
 const Drawer = ({onValueChange}) => {
@@ -14,6 +15,7 @@ const Drawer = ({onValueChange}) => {
   const [message, setMessage] = useState('');
   const [prompt,setprompt] = useState(false)
   const [type,setType] = useState('')
+  const [loading,setloading] = useState(false)
   let selectedFile = useRef('');
  
 
@@ -33,6 +35,7 @@ const Drawer = ({onValueChange}) => {
   }
 
   const fetchFileList = () => {
+    setloading(!loading)
     fetch('http://localhost:5000/filelist', {
       method: 'POST',
       headers: {
@@ -64,6 +67,7 @@ const Drawer = ({onValueChange}) => {
   const handleFileShare = () => {
     setResname(!resname);
     console.log(selectedFile.current);
+    setloading(!loading);
     if (selectedFile.current && resUsername) {
       fetch('http://localhost:5000/sharedata', {
         method: 'POST',
@@ -96,6 +100,7 @@ const Drawer = ({onValueChange}) => {
 
   const handleFileDelete = () => {
     console.log(selectedFile.current);
+    setloading(!loading)
     if (selectedFile.current) {
       fetch('http://localhost:5000/deletefile', {
         method: 'POST',
@@ -146,16 +151,20 @@ const Drawer = ({onValueChange}) => {
         <div id='bar2'></div>
       </div>
 
+
       {prompt && (
-       <PromptBox onDataReturn={handleDataReturn} content={type}/>
-      )}
+        <PromptBox onDataReturn={handleDataReturn} content={type}/>
+        )}
       <div className={`drawer-container ${drawer ? 'open' : ''}`}>
 
         <button className="upload-drawer-btn" onClick={() => setUpload(!upload)}> Upload file </button>
         {upload && (
           <Upload />
-        )}
+          )}
         <hr width="100%" size="2" color='black' />
+        {loading &&(
+          <Loading/>
+        )}
         {pdfArray.map((content, index) => (
           <div className="files" key={index}>
             <pre className='filename' onClick={()=>{

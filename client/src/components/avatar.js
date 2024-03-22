@@ -21,6 +21,7 @@ const Avatar=({ username }) => {
         .then( data =>{
           console.log(data)
           sessionStorage.clear('userid');
+          sessionStorage.clear('username');
           Navigate('/')  
       })
         .catch((error)=>{

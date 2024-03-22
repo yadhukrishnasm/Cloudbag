@@ -87,7 +87,6 @@ export default function Upload() {
         id="select-subname"
         name="cars"
         onChange={(e) => setSubname(e.target.value)}>
-
         <option value="math">Math</option>
         <option value="english">English</option>
         <option value="biology">Biology</option>
