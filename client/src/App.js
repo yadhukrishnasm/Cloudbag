@@ -1,9 +1,10 @@
-  import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/loginPage';
 import HomePage from './pages/homePage';
 import RegisterPage from './pages/registerPage'
 import Cloudspell from './pages/cloudspell';
 import Start from './pages/start';
+// import Ar from './'
 
 function App() {
   
@@ -17,6 +18,7 @@ console.clear();
         <Route path="/main_homepage/:username" element={ <HomePage /> } />
         <Route path="/register" element={ <RegisterPage /> } />
         <Route path="/gramma" element = { <Cloudspell/> }></Route>
+        {/* <Route path="/ar" element = { <Ar/> }></Route>   */}
         <Route path="/" element = {<Start/>}></Route>
       </Routes>
     </BrowserRouter>

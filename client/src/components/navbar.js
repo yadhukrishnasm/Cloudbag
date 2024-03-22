@@ -6,6 +6,7 @@ import './navbar.css';
 export const Navbar = ({username})=>{
   const [shouldDisplay, setShouldDisplay] = useState(true);
   const location = useLocation();
+  const [links,setlinks] = useState(["AR","Cloudspell"])
 
   useEffect(() => {
     const currentEndpoint = location.pathname;
@@ -16,6 +17,20 @@ export const Navbar = ({username})=>{
       setShouldDisplay(true);
     }
   }, [location.pathname]);
+
+  useEffect(() => {
+    const currentEndpoint = location.pathname;
+
+    if (currentEndpoint === '/gramma') {
+      setlinks(["AR","Home"]);
+    }
+  }, [location.pathname]);
+
+  const redirectToARPage = () => {
+    window.location.href = 'http://localhost:5000/ar'; 
+};
+
+
   return (
     <div>
       <div className="nav">
@@ -26,8 +41,8 @@ export const Navbar = ({username})=>{
         {shouldDisplay && (
           <div id="right">
                 <span id='links'>
-                  <Link className ='link' to ="/ar">AR</Link>
-                  <Link className ='link' to ="/gramma">Cloudspell</Link>
+                  <span className ='link' onClick={redirectToARPage}>{links[0]}</span>
+                  <Link className ='link' to ="/gramma">{links[1]}</Link>
                 </span>
                 <span id='user'>
                   <Avatar username = {username}/>  

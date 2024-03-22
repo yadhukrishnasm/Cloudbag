@@ -28,6 +28,7 @@ app.set('view engine', 'ejs');
 app.use( express.static("views") );
 
 app.get('/ar', (req,res) => {
+  console.log('inside')
   res.render('ar')
 })
 
