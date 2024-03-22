@@ -96,7 +96,6 @@ export default function Upload() {
         <option value="biology">Biology</option>
         <option value="computerScience">Computer Science</option>
         </select>
-
         <button onClick={upload} id='upload-button'>Upload</button>
     </div>
     

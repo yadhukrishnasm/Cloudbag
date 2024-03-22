@@ -12,14 +12,27 @@
 }
 .upload-container{
   margin: 10px;
+  line-height: 2;
+  
+
+  select{
+    height:2em;
+    border-radius:5px;
+    border:none;
+  }
+}
+
+#select-label{
+  font-family:monospace;
+    font-size:1.1em;
 }
 #upload-button{
-  height: 2.5em;
-  width: 35em;
+  height: 2em;
   padding: 5px;
-  border-radius: 10px;
+  border-radius: 5px;
   border-style: hidden;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  border:1px solid black;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
   font-weight: bolder;
   background-color:#F9F0DF;
   color:#750080 ;
