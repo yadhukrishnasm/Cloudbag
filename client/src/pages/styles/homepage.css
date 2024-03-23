@@ -4,6 +4,7 @@
     float: left;
     padding: 10px;
     overflow:scroll;
+    scrollbar-width: thin;
 }
 
 .sidebar{
@@ -18,6 +19,7 @@
     position: fixed;
     right: 0px;
     top: 10vh;
+    scrollbar-width: thin;
     overflow-y: scroll;
     overflow-x: hidden;
     z-index: -1;

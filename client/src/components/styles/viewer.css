@@ -1,9 +1,9 @@
 .viewer-container {
     width: 100%;
     height: calc(100vh - 10vh);
-  }
+}
   
-   audio {
-    margin-top: 20%;
-    margin-left: 45%; 
-  }
+audio {
+  margin-top: 20%;
+  margin-left: 45%; 
+}

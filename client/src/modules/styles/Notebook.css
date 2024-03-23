@@ -18,6 +18,7 @@
     background-color: #fff6e8;
     scrollbar-color: transparent;
     overflow: auto; 
+    scrollbar-width: thin;
     pre{
       font-size: 15px;
       word-wrap: break-word;
