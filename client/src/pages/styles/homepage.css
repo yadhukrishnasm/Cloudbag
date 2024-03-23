@@ -1,8 +1,9 @@
 .viewer{
-    height: 70vh;
+    height: 90vh;
     width: 70vw;
     float: left;
     padding: 10px;
+    overflow:scroll;
 }
 
 .sidebar{

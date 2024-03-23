@@ -42,9 +42,9 @@ const Viewer = (props) => {
     <div id="content">
 
       {type === 'image/jpeg' || type === 'image/png' ? (
-        <img src={`data:image/png;base64,${imageSrc}`} width="100%" height="600px" alt="Image" />
+        <img src={`data:image/png;base64,${imageSrc}`} width="100%" height="800px" alt="Image" />
       ) : type === 'application/pdf' ? (
-        <object data={`data:application/pdf;base64,${imageSrc}`} width="100%" height="600px" type="application/pdf">
+        <object data={`data:application/pdf;base64,${imageSrc}`} width="100%" height="800px" type="application/pdf">
           PDF Viewer not available. Download the PDF to view.
         </object>
       ) : type === 'text/plain' ? (

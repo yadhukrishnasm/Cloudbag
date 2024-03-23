@@ -14,7 +14,7 @@
     width: 18em;
     height: 100%;
     padding: 15px;
-    border-radius: 10px; 
+    border-radius: 5px; 
     background-color: #fff6e8;
     scrollbar-color: transparent;
     overflow: auto; 
@@ -27,7 +27,7 @@
   .notebook-textarea {
     transition: all .2s ease-in-out;
     width: 90%;
-    border-radius: 10px; 
+    border-radius: 5px; 
     height: 100%;
     padding: 15px;
     outline: none;
